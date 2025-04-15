@@ -1,6 +1,6 @@
 import { useRoutes, Navigate } from "react-router-dom";
 
-import ProtectedRoute from "./ProtectedRoute";
+// import ProtectedRoute from "./ProtectedRoute";
 import LandingPage from "../pages/LandingPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
