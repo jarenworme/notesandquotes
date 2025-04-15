@@ -1,0 +1,122 @@
+:root{
+    --secondary: #222222;
+    --accent-crimson: #E23636;
+    --accent-titanium-white: #FFFFFF;	
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    height: 9vh;
+    min-height: 48px;
+    width: 100vw;
+    background-color: var(--secondary);
+}
+
+.nav-left-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin: 0 24px;    
+}
+
+.nav-logo-wrapper {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.nav-logo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.nav-right-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    margin: 0 24px;
+}
+
+.nav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 36px;
+    width: fit-content;
+    margin: 0 8px;
+    padding: 4px 0;
+    border: 1px solid transparent;
+    background-color: transparent;
+    transition: border-bottom 0.3s ease;
+}
+
+.nav-button:hover, .nav-icon:hover {
+    cursor: pointer;
+    border-bottom: 3px solid var(--accent-crimson);
+}
+
+.nav-text {
+    margin: 2px 8px 0 0;
+    font-size: large;
+    color: var(--accent-titanium-white);
+}
+
+.nav-svg-wrapper {
+    height: 32px;
+    width: 32px;
+    margin-bottom: 4px;
+    border: none;
+    background-color: transparent;
+}
+
+.nav-svg {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.nav-icon-nested {
+    height: 32px;
+    margin-left: 4px;
+    padding: 2px 0;    
+    color: var(--accent-titanium-white);
+}
+
+.nav-icon {
+    margin: 8px;
+    padding: 2px 0;
+    border: 1px solid transparent;
+    color: var(--accent-titanium-white);
+    transition: border-bottom 0.3s ease;
+}
+
+.nav-icon-home {
+    height: 30px;
+}
+
+
+@media screen and (max-width: 500px) {
+    .nav-text {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    .nav-left-wrapper, .nav-right-wrapper {
+        margin: 0 18px;
+    }
+}
