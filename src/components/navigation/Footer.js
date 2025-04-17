@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCheck, faMinus } from '@fortawesome/free-solid-svg-icons';
 // import { faInstagram, faMedium } from '@fortawesome/free-brands-svg-icons';
 import { AuthContext } from "../../context/AuthContext";
-// import '../styles/landing-page.css';
+import '../styles/footer.css';
 
 
-export default function LandingPage () {
+export default function Footer () {
     // init navigate variable for page navigation
     const navigate = useNavigate();
 
@@ -22,14 +22,16 @@ export default function LandingPage () {
     const { authData } = useContext(AuthContext);
 
     return (
-        <div className="lp-wrapper">
-            <h1>line 1</h1>
-            <h1>line 2</h1>
-            <h1>{authData.userID}</h1>
-            { authData.name && <h3>{authData.name}</h3>}
-            {authData.isAuth && <h3>authorized</h3>}
+        <div className="footer-wrapper">
+            <p>image to go here</p>
+            <p>Notes & Quotes</p>
+            <p>social links</p>
+            <p>podcast links</p>
             <button onClick={navigateLogin}>admin login</button>
             {authData.isAuth && <button onClick={navigateRegister}>admin register</button>}
+            <p>
+                &copy; {new Date().getFullYear()} Notes & Quotes. All rights reserved.
+            </p>
         </div>
     );
 }
