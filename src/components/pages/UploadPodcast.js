@@ -1,84 +1,171 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import { auth } from "../../config/firebase-config";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { AuthContext } from "../../context/AuthContext";
-import "../styles/auth.css"
+import { useAddPodcast } from "../../hooks/useAddPodcast";
+import "../styles/upload-edit.css"
 
 
 export default function UploadPodcast() {
     // init navigate variable for page navigation
     const navigate = useNavigate();
-    // const navigateForgotPassword = () => navigate('/forgotPassword', { replace: false });
 
     // state variables
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [episodeLength, setEpisodeLength] = useState("");
+    const [episodeNum, setEpisodeNum] = useState("");
+    const [episodeDateString, setEpisodeDateString] = useState("");
+    const [episodeDateStringError, setEpisodeDateStringError] = useState("");
+    const [linkApple, setLinkApple] = useState("");
+    const [linkSpotify, setLinkSpotify] = useState("");
+    const [linkYT, setLinkYT] = useState("");
 
-    // Access setAuthData from context
-    const { setAuthData } = useContext(AuthContext);
+    const { addPodcast } = useAddPodcast();
 
-    // login logic
+    const validateEpisodeDateString = () => {
+        // gives an error for an incorrectly formatted date
+        var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if(!episodeDateString.match(dateRegex)){
+            setEpisodeDateStringError('Please Format date as YYYY-MM-DD');
+        } else {
+            setEpisodeDateStringError('');
+        }
+    }
+
     const handleSubmit = async (e) => {
+        // prevent default form submission
         e.preventDefault();
 
+        // calculate the correct id in firebase based on the episode number
+        let idnum = "";
+
+        if (episodeNum < 10) {
+            idnum = "ep-00" + episodeNum.toString();
+        } else if (episodeNum > 9 && episodeNum < 100) {
+            idnum = "ep-0" + episodeNum.toString();
+        } else {
+            idnum = "ep-" + episodeNum.toString();
+        }
+
         try {
-            setError("");
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-
-            // Update global auth state via context
-            setAuthData({
-                userID: user.uid,
-                name: user.email,
-                isAuth: true,
+            await addPodcast({ 
+                idnum, 
+                title,
+                description,
+                episodeLength,
+                episodeNum: parseInt(episodeNum),
+                episodeDateString,
+                linkApple,
+                linkSpotify,
+                linkYT
             });
-
-            navigate("/", { replace: false });
+            navigate('/', { replace: false });
         } catch (err) {
-            setError("Login failed. Please check your credentials.");
+            console.error(err.message);
         }
     };
 
+    const handleCancel = () => navigate('/', { replace: false });
+
     return (
-        <div className="auth-wrapper">
-            <div className="auth-card">
-                <div className="auth-content-wrapper">
-                    { error && <p className="auth-signin-error">{error}</p> } 
-                    <form className="auth-form" onSubmit={handleSubmit}>
-                        <div className="auth-input-wrapper">
-                            <input 
-                                className="auth-input" 
-                                type="email" 
-                                placeholder="Enter email" 
-                                value={email} 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                required 
-                            />
-                        </div>
-                        <div className="auth-input-wrapper">
-                            <input 
-                                className="auth-input" 
-                                type={showPassword ? "text" : "password"} 
-                                placeholder="Enter password" value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
-                                required 
-                            />
-                            <FontAwesomeIcon 
-                                icon={showPassword ? faEye : faEyeSlash} 
-                                className='auth-eye' 
-                                size='xl' 
-                                onClick={() => setShowPassword(!showPassword)}
-                            />
-                        </div>
-                        <button type="submit" className="auth-submit-btn">Login</button>
-                    </form>       
+        <div className="upload-wrapper">
+            <form className="upload-form" onSubmit={handleSubmit}>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Podcast Title</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={title} 
+                        onChange={(e) => setTitle(e.target.value)} 
+                        required 
+                    />
                 </div>
-            </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Description</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={description} 
+                        onChange={(e) => setDescription(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Length</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        placeholder="use format 00:00" 
+                        value={episodeLength} 
+                        onChange={(e) => setEpisodeLength(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Episode Number</label>
+                    <input 
+                        className="upload-input" 
+                        type="number" 
+                        value={episodeNum} 
+                        onChange={(e) => setEpisodeNum(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <p className="upload-error">{ episodeDateStringError }</p>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Episode Date</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        placeholder="use format YYYY-MM-DD" 
+                        value={episodeDateString} 
+                        onChange={(e) => setEpisodeDateString(e.target.value)} 
+                        onBlur={validateEpisodeDateString}
+                        required 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Link to Apple</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={linkApple} 
+                        onChange={(e) => setLinkApple(e.target.value)} 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Link to Spotify</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={linkSpotify} 
+                        onChange={(e) => setLinkSpotify(e.target.value)} 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Link to YouTube</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={linkYT} 
+                        onChange={(e) => setLinkYT(e.target.value)} 
+                    />
+                </div>
+                <button 
+                    type="submit" 
+                    className="auth-submit-btn"
+                    disabled={
+                        title.length === 0 || 
+                        description.length === 0 || 
+                        episodeLength.length === 0 ||
+                        episodeNum.length === 0 ||
+                        episodeDateString.length === 0 || 
+                        episodeDateStringError.length > 0
+                    }
+                >
+                    Upload Podcast
+                </button>
+            </form>  
+            <button type="button" onClick={handleCancel}>Cancel</button>     
         </div>
     );
 }

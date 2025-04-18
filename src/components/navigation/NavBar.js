@@ -13,9 +13,11 @@ export default function NavBar() {
     const navigate = useNavigate();
 
     // navigation functions
-    const navigateHome = () => navigate('/home');
+    const navigateHome = () => navigate('/', { replace: false });
     const navigateUserPieces = () => navigate('/userPieces');
     const navigateUserSets = () => navigate('/userSets');
+    const navigateUploadPodcast = () => navigate('/uploadPodcast', { replace: false });
+    const navigateUploadGuest = () => navigate('/uploadGuest', { replace: false });
 
     // access Context for Authentication for showing admin panel
     const { authData, setAuthData } = useContext(AuthContext);
@@ -51,8 +53,8 @@ export default function NavBar() {
             { authData.isAuth && (
                 <div className='admin-panel'>
                     <h4>Notes & Quotes Admin Panel</h4>
-                    <button>Add Guest</button>
-                    <button>Add Podcast</button>
+                    <button onClick={navigateUploadGuest}>Add Guest</button>
+                    <button onClick={navigateUploadPodcast}>Add Podcast</button>
                     <button onClick={signout}>sign out</button>
                 </div>
             ) }

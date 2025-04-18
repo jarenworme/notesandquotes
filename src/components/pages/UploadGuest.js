@@ -1,84 +1,125 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import { auth } from "../../config/firebase-config";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { AuthContext } from "../../context/AuthContext";
-import "../styles/auth.css"
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../config/firebase-config";
+import { useAddGuest } from "../../hooks/useAddGuest";
+import "../styles/upload-edit.css"
 
 
 export default function UploadGuest() {
     // init navigate variable for page navigation
     const navigate = useNavigate();
-    // const navigateForgotPassword = () => navigate('/forgotPassword', { replace: false });
 
     // state variables
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+    const [guestName, setGuestName] = useState("");
+    const [description, setDescription] = useState("");
+    const [personalLink, setPersonalLink] = useState("");
+    const [podcastLink, setPodcastLink] = useState("");
+    const [headshotFile, setHeadshotFile] = useState("");
+    const [preview, setPreview] = useState("");
 
-    // Access setAuthData from context
-    const { setAuthData } = useContext(AuthContext);
+    const { addGuest } = useAddGuest();
 
-    // login logic
+    // function to handle the user inputted photo file
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setHeadshotFile(file);
+        setPreview(URL.createObjectURL(file)); // Show image preview
+    };
+
     const handleSubmit = async (e) => {
+        // prevent default form submission
         e.preventDefault();
 
+        // calculate the correct id in firebase based on the episode number
+        let firebaseid = guestName.replace(/\s+/g, '');
+        let headshotLink = "";
+
+        // Upload new profile picture to Firebase Storage
+        if (headshotFile) {
+            const storageRef = ref(storage, `guest_headshots/${firebaseid}`);
+            await uploadBytes(storageRef, headshotFile);
+            headshotLink = await getDownloadURL(storageRef);
+        }
+
         try {
-            setError("");
-            const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-
-            // Update global auth state via context
-            setAuthData({
-                userID: user.uid,
-                name: user.email,
-                isAuth: true,
+            await addGuest({ 
+                firebaseid,
+                guestName,
+                description,
+                personalLink,
+                podcastLink,
+                headshotLink
             });
-
-            navigate("/", { replace: false });
+            navigate('/', { replace: false });
         } catch (err) {
-            setError("Login failed. Please check your credentials.");
+            console.error(err.message);
         }
     };
 
+    const handleCancel = () => navigate('/', { replace: false });
+
     return (
-        <div className="auth-wrapper">
-            <div className="auth-card">
-                <div className="auth-content-wrapper">
-                    { error && <p className="auth-signin-error">{error}</p> } 
-                    <form className="auth-form" onSubmit={handleSubmit}>
-                        <div className="auth-input-wrapper">
-                            <input 
-                                className="auth-input" 
-                                type="email" 
-                                placeholder="Enter email" 
-                                value={email} 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                required 
-                            />
-                        </div>
-                        <div className="auth-input-wrapper">
-                            <input 
-                                className="auth-input" 
-                                type={showPassword ? "text" : "password"} 
-                                placeholder="Enter password" value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
-                                required 
-                            />
-                            <FontAwesomeIcon 
-                                icon={showPassword ? faEye : faEyeSlash} 
-                                className='auth-eye' 
-                                size='xl' 
-                                onClick={() => setShowPassword(!showPassword)}
-                            />
-                        </div>
-                        <button type="submit" className="auth-submit-btn">Login</button>
-                    </form>       
+        <div className="upload-wrapper">
+            <form className="upload-form" onSubmit={handleSubmit}>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Guest Name</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={guestName} 
+                        onChange={(e) => setGuestName(e.target.value)} 
+                        required 
+                    />
                 </div>
-            </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Description</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={description} 
+                        onChange={(e) => setDescription(e.target.value)} 
+                        required 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Guest Personal Link</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={personalLink} 
+                        onChange={(e) => setPersonalLink(e.target.value)} 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Podcast Episode Link</label>
+                    <input 
+                        className="upload-input" 
+                        type="number" 
+                        value={podcastLink} 
+                        onChange={(e) => setPodcastLink(e.target.value)} 
+                    />
+                </div>
+                <div className="upload-img-content-wrapper">
+                        { preview !== "" && 
+                            <div className="upload-img-wrapper">
+                                <img src={preview} alt="Guest Headshot" className="upload-img" />
+                            </div>
+                        }
+                        <input className="upload-file-input" type="file" onChange={handleFileChange} accept="image/*" />
+                    </div>
+                <button 
+                    type="submit" 
+                    className="auth-submit-btn"
+                    disabled={
+                        guestName.length === 0 || 
+                        description.length === 0
+                    }
+                >
+                    Upload Guest
+                </button>
+            </form>  
+            <button type="button" onClick={handleCancel}>Cancel</button>     
         </div>
     );
 }
