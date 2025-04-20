@@ -8,7 +8,10 @@
 }
 
 body, button, input, select, textarea {
+  font-family: 'Playfair Display Variable', serif;
+}
+
+body {
   margin: 0;
   padding: 0;
-  font-family: 'Playfair Display Variable', serif;
 }

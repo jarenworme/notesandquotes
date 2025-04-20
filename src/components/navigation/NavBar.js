@@ -14,8 +14,9 @@ export default function NavBar() {
 
     // navigation functions
     const navigateHome = () => navigate('/', { replace: false });
-    const navigateUserPieces = () => navigate('/userPieces');
+    const navigatePodcasts = () => navigate('/episodes');
     const navigateUserSets = () => navigate('/userSets');
+    const navigateEditFeatured = () => navigate('/editFeatured', { replace: false });
     const navigateUploadPodcast = () => navigate('/uploadPodcast', { replace: false });
     const navigateUploadGuest = () => navigate('/uploadGuest', { replace: false });
 
@@ -40,8 +41,8 @@ export default function NavBar() {
                     <h2>logo</h2>
                 </div>
                 <div className='nav-right-wrapper'>
-                    <button className='nav-button' onClick={navigateUserPieces}>
-                        <p className='nav-text'>Link1</p>
+                    <button className='nav-button' onClick={navigatePodcasts}>
+                        <p className='nav-text'>Episodes</p>
                     </button>
                     <button className='nav-button' onClick={navigateUserSets}>
                         <p className='nav-text'>Link2</p>
@@ -55,6 +56,7 @@ export default function NavBar() {
                     <h4>Notes & Quotes Admin Panel</h4>
                     <button onClick={navigateUploadGuest}>Add Guest</button>
                     <button onClick={navigateUploadPodcast}>Add Podcast</button>
+                    <button onClick={navigateEditFeatured}>Edit Featured</button>
                     <button onClick={signout}>sign out</button>
                 </div>
             ) }

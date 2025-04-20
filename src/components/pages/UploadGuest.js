@@ -14,7 +14,7 @@ export default function UploadGuest() {
     const [guestName, setGuestName] = useState("");
     const [description, setDescription] = useState("");
     const [personalLink, setPersonalLink] = useState("");
-    const [podcastLink, setPodcastLink] = useState("");
+    const [podcastEpisode, setPodcastEpisode] = useState("");
     const [headshotFile, setHeadshotFile] = useState("");
     const [preview, setPreview] = useState("");
 
@@ -31,8 +31,18 @@ export default function UploadGuest() {
         // prevent default form submission
         e.preventDefault();
 
+        let episodeid = "";
+
+        if (podcastEpisode < 10) {
+            episodeid = "ep-00" + podcastEpisode.toString();
+        } else if (podcastEpisode > 9 && podcastEpisode < 100) {
+            episodeid = "ep-0" + podcastEpisode.toString();
+        } else {
+            episodeid = "ep-" + podcastEpisode.toString();
+        }
+
         // calculate the correct id in firebase based on the episode number
-        let firebaseid = guestName.replace(/\s+/g, '');
+        let firebaseid = episodeid + "-" + guestName.replace(/\s+/g, '');
         let headshotLink = "";
 
         // Upload new profile picture to Firebase Storage
@@ -48,7 +58,8 @@ export default function UploadGuest() {
                 guestName,
                 description,
                 personalLink,
-                podcastLink,
+                podcastEpisode,
+                podcastEpisodeID: episodeid,
                 headshotLink
             });
             navigate('/', { replace: false });
@@ -92,12 +103,13 @@ export default function UploadGuest() {
                     />
                 </div>
                 <div className="upload-input-wrapper">
-                    <label className="upload-label">Podcast Episode Link</label>
+                    <label className="upload-label">Podcast Appearance Episode</label>
                     <input 
                         className="upload-input" 
                         type="number" 
-                        value={podcastLink} 
-                        onChange={(e) => setPodcastLink(e.target.value)} 
+                        value={podcastEpisode} 
+                        onChange={(e) => setPodcastEpisode(e.target.value)} 
+                        required
                     />
                 </div>
                 <div className="upload-img-content-wrapper">
@@ -106,7 +118,7 @@ export default function UploadGuest() {
                                 <img src={preview} alt="Guest Headshot" className="upload-img" />
                             </div>
                         }
-                        <input className="upload-file-input" type="file" onChange={handleFileChange} accept="image/*" />
+                        <input className="upload-file-input" type="file" onChange={handleFileChange} accept="image/*" required />
                     </div>
                 <button 
                     type="submit" 

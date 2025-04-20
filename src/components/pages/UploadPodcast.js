@@ -15,9 +15,11 @@ export default function UploadPodcast() {
     const [episodeNum, setEpisodeNum] = useState("");
     const [episodeDateString, setEpisodeDateString] = useState("");
     const [episodeDateStringError, setEpisodeDateStringError] = useState("");
+    const [isFav, setIsFav] = useState(false);
     const [linkApple, setLinkApple] = useState("");
     const [linkSpotify, setLinkSpotify] = useState("");
     const [linkYT, setLinkYT] = useState("");
+    const [linkAmazon, setLinkAmazon] = useState("");
 
     const { addPodcast } = useAddPodcast();
 
@@ -54,9 +56,11 @@ export default function UploadPodcast() {
                 episodeLength,
                 episodeNum: parseInt(episodeNum),
                 episodeDateString,
+                isFav,
                 linkApple,
                 linkSpotify,
-                linkYT
+                linkYT,
+                linkAmazon
             });
             navigate('/', { replace: false });
         } catch (err) {
@@ -123,6 +127,15 @@ export default function UploadPodcast() {
                         required 
                     />
                 </div>
+                <div className="upload-checkbox-wrapper">
+                    <label className="upload-label">Add to Naomi's Favorites?</label>
+                    <input 
+                        className="upload-checkbox" 
+                        type="checkbox" 
+                        value={isFav} 
+                        onChange={() => setIsFav(!isFav)} 
+                    />
+                </div>
                 <div className="upload-input-wrapper">
                     <label className="upload-label">Link to Apple</label>
                     <input 
@@ -148,6 +161,15 @@ export default function UploadPodcast() {
                         type="string" 
                         value={linkYT} 
                         onChange={(e) => setLinkYT(e.target.value)} 
+                    />
+                </div>
+                <div className="upload-input-wrapper">
+                    <label className="upload-label">Link to Amazon</label>
+                    <input 
+                        className="upload-input" 
+                        type="string" 
+                        value={linkAmazon} 
+                        onChange={(e) => setLinkAmazon(e.target.value)} 
                     />
                 </div>
                 <button 

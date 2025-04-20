@@ -10,7 +10,8 @@ export const useAddGuest = () => {
         guestName,
         description,
         personalLink,
-        podcastLink,
+        podcastEpisode,
+        podcastEpisodeID,
         headshotLink
     }) => {
         const docRef = doc(guestsCollectionRef, firebaseid); // use custom ID
@@ -18,7 +19,8 @@ export const useAddGuest = () => {
             guestName,
             description,
             personalLink,
-            podcastLink,
+            podcastEpisode,
+            podcastEpisodeID,
             headshotLink
         });
     };
