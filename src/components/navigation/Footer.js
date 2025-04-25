@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCheck, faMinus } from '@fortawesome/free-solid-svg-icons';
-// import { faInstagram, faMedium } from '@fortawesome/free-brands-svg-icons';
-import { AuthContext } from "../../context/AuthContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faYoutube, faTiktok, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import '../styles/footer.css';
+
+import flogo from "../../assets/logos/Logo3.png"
 
 
 export default function Footer () {
@@ -12,24 +12,71 @@ export default function Footer () {
     const navigate = useNavigate();
 
     // routing functions
-    // const navigateAboutUs = () => navigate('/about', { replace: false });
     const navigateLogin = () => navigate('/adminLogin', { replace: false });
-    const navigateRegister = () => navigate('/adminRegister', { replace: false });
-    // const navigateAuthRegister = () => navigate('/auth/1', { replace: false });
-    // const navigateLandingPage = () => navigate('/', { replace: false });
-    // const navigatePayments = () => navigate('/payments', { replace: false });
 
-    const { authData } = useContext(AuthContext);
 
     return (
         <div className="footer-wrapper">
-            <p>image to go here</p>
-            <p>Notes & Quotes</p>
-            <p>social links</p>
-            <p>podcast links</p>
-            <button onClick={navigateLogin}>admin login</button>
-            {authData.isAuth && <button onClick={navigateRegister}>admin register</button>}
-            <p>
+            <div className="footer-top-wrapper">
+                <div className="footer-left-wrapper">
+                    <div className="footer-img-wrapper">
+                        <img src={flogo} alt='logo' className='footer-img' />
+                    </div>
+                    <p className="footer-text">The Notes and Quotes Podcast</p>
+                    <a className="footer-text">notesandquotespodcast@gmail.com</a>
+                    <button className="footer-admin-btn" onClick={navigateLogin}>- admin login -</button>
+                    <div className="footer-social-wrapper">
+                        <a 
+                            href="https://www.instagram.com/notesandquotespod/" 
+                            className="footer-social-a" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon icon={faInstagram} className='footer-icon' size='lg' />                        
+                        </a>
+                        <a 
+                            href="https://www.youtube.com/@NotesandQuotesPod" 
+                            className="footer-social-a" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon icon={faYoutube} className='footer-icon' size='lg' />                        
+                        </a>
+                        <a 
+                            href="https://www.instagram.com/notesandquotespod/" 
+                            className="footer-social-a" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon icon={faTiktok} className='footer-icon' />                        
+                        </a>
+                        <a 
+                            href="https://www.linkedin.com/company/notes-quotes-podcast/posts/?feedView=all&viewAsMember=true" 
+                            className="footer-social-a" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            <FontAwesomeIcon icon={faLinkedin} className='footer-icon' size='lg' />                        
+                        </a>
+                    </div>
+                </div>
+                <div className="footer-right-wrapper">
+                    <h2 className="footer-title">By one 20-something.</h2>
+                    <h2 className="footer-title">For every 20-something.</h2>
+                    <div className="footer-streaming-links-wrapper"></div>
+                    <div className="footer-cta-wrapper">
+                        <a 
+                            href="https://www.patreon.com/NotesandQuotesPodcast" 
+                            className="footer-cta"
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                        >
+                            Join our Patreon community!
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p className="footer-copy-text">
                 &copy; {new Date().getFullYear()} Notes & Quotes. All rights reserved.
             </p>
         </div>

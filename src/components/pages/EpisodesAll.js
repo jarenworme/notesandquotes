@@ -6,7 +6,7 @@ import { useDeletePodcast } from "../../hooks/useDeletePodcast";
 import '../styles/loading.css';
 
 
-export default function Podcasts() {
+export default function EpisodesAll() {
     // init navigate variable for page navigation
     const navigate = useNavigate();
 
