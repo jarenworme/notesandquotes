@@ -1,32 +1,112 @@
 .upload-wrapper {
-    padding: 200px 0 48px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    min-height: fit-content;
+    width: 100%;
+    padding: 140px 30vw 48px 30vw;
 }
 
 .upload-form {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .upload-input-wrapper {
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    min-width: fit-content;
+    margin: 8px 0;
 }
 
 .upload-label {
-
+    font-size: medium;
+    margin-left: 16px;
+    margin-bottom: 2px;
 }
 
 .upload-input {
-
+    width: 100%;
+    min-width: 300px;
+    box-sizing: border-box;
+    padding: 8px;
+    border: 1px solid var(--primary);
+    border-radius: 6px;
+    background-color: var(--white);
 }
 
 .upload-img-content-wrapper {
+    width: 100%;
+    min-width: fit-content;
+    height: fit-content;
 
 }
 
 .upload-img-wrapper {
-
+    height: 75%;
+    min-height: fit-content;
+    width: 100%;
+    min-width: 300px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
 }
 
 .upload-img {
-
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
+.upload-error {
+    color: var(--error);
+    margin: 0;
+}
+.upload-checkbox-wrapper {
+    width: 100%;
+    margin: 4px 0;
+}
+
+.upload-submit-btn {
+    width: fit-content;
+    min-width: 220px;
+    margin: 16px 0 8px 0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    color: var(--white);
+    font-size: medium;
+    background-color: var(--primary);
+}
+
+.upload-submit-btn:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark);
+}
+
+.upload-cancel-btn {
+    width: fit-content;
+    min-width: 220px;
+    margin: 16px 0;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--black);
+    color: var(--white);
+    font-size: medium;
+    background-color: var(--grey);
+}
+
+.upload-cancel-btn:hover {
+    cursor: pointer;
+    background-color: var(--grey-dark);
+}

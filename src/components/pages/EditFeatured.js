@@ -45,7 +45,6 @@ export default function EditFeatured() {
         const file = e.target.files[0];
         setImgfile(file);
         setPreview(URL.createObjectURL(file)); // Show image preview
-        console.log(file);
     };
 
     const handleSubmit = async (e) => {
@@ -121,7 +120,6 @@ export default function EditFeatured() {
                         required 
                     />
                 </div>
-                
                 <div className="upload-input-wrapper">
                     <label className="upload-label">YouTube Link</label>
                     <input 
@@ -131,9 +129,9 @@ export default function EditFeatured() {
                         onChange={(e) => setYtlink(e.target.value)} 
                     />
                 </div>
-                <button type="submit" className="auth-submit-btn">Update Featured Section</button>
+                <button type="submit" className="upload-submit-btn">Update Featured Section</button>
             </form>  
-            <button type="button" onClick={handleCancel}>Cancel</button>     
+            <button type="button" onClick={handleCancel} className="upload-cancel-btn">Cancel</button>     
         </div>
     );
 }

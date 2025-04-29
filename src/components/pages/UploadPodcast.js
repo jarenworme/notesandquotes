@@ -114,7 +114,6 @@ export default function UploadPodcast() {
                         required 
                     />
                 </div>
-                <p className="upload-error">{ episodeDateStringError }</p>
                 <div className="upload-input-wrapper">
                     <label className="upload-label">Episode Date</label>
                     <input 
@@ -127,15 +126,7 @@ export default function UploadPodcast() {
                         required 
                     />
                 </div>
-                <div className="upload-checkbox-wrapper">
-                    <label className="upload-label">Add to Naomi's Favorites?</label>
-                    <input 
-                        className="upload-checkbox" 
-                        type="checkbox" 
-                        value={isFav} 
-                        onChange={() => setIsFav(!isFav)} 
-                    />
-                </div>
+                <p className="upload-error">{ episodeDateStringError }</p>
                 <div className="upload-input-wrapper">
                     <label className="upload-label">Link to Apple</label>
                     <input 
@@ -172,9 +163,54 @@ export default function UploadPodcast() {
                         onChange={(e) => setLinkAmazon(e.target.value)} 
                     />
                 </div>
+                <div className="upload-checkbox-wrapper">
+                    <label className="upload-label">Add to Naomi's Favorites</label>
+                    <input 
+                        className="upload-checkbox" 
+                        type="checkbox" 
+                        value={isFav} 
+                        onChange={() => setIsFav(!isFav)} 
+                    />
+                </div>
+                <div className="upload-checkbox-wrapper">
+                    <label className="upload-label">Add to Mental Health</label>
+                    <input 
+                        className="upload-checkbox" 
+                        type="checkbox" 
+                        value={isFav} 
+                        onChange={() => setIsFav(!isFav)} 
+                    />
+                </div>
+                <div className="upload-checkbox-wrapper">
+                    <label className="upload-label">Add to Personal Growth</label>
+                    <input 
+                        className="upload-checkbox" 
+                        type="checkbox" 
+                        value={isFav} 
+                        onChange={() => setIsFav(!isFav)} 
+                    />
+                </div>
+                <div className="upload-checkbox-wrapper">
+                    <label className="upload-label">Add to Climate Justice</label>
+                    <input 
+                        className="upload-checkbox" 
+                        type="checkbox" 
+                        value={isFav} 
+                        onChange={() => setIsFav(!isFav)} 
+                    />
+                </div>
+                <div className="upload-checkbox-wrapper">
+                    <label className="upload-label">Add to Social Justice</label>
+                    <input 
+                        className="upload-checkbox" 
+                        type="checkbox" 
+                        value={isFav} 
+                        onChange={() => setIsFav(!isFav)} 
+                    />
+                </div>
                 <button 
                     type="submit" 
-                    className="auth-submit-btn"
+                    className="upload-submit-btn"
                     disabled={
                         title.length === 0 || 
                         description.length === 0 || 
@@ -187,7 +223,7 @@ export default function UploadPodcast() {
                     Upload Podcast
                 </button>
             </form>  
-            <button type="button" onClick={handleCancel}>Cancel</button>     
+            <button type="button" onClick={handleCancel} className="upload-cancel-btn">Cancel</button>     
         </div>
     );
 }

@@ -122,7 +122,7 @@ export default function UploadGuest() {
                     </div>
                 <button 
                     type="submit" 
-                    className="auth-submit-btn"
+                    className="upload-submit-btn"
                     disabled={
                         guestName.length === 0 || 
                         description.length === 0
@@ -131,7 +131,7 @@ export default function UploadGuest() {
                     Upload Guest
                 </button>
             </form>  
-            <button type="button" onClick={handleCancel}>Cancel</button>     
+            <button type="button" onClick={handleCancel} className="upload-cancel-btn">Cancel</button>     
         </div>
     );
 }
