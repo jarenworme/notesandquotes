@@ -52,7 +52,7 @@
 }
 
 .nav-btn {
-    margin: 0 32px;
+    margin: 0 16px;
     padding: 4px 0;
     font-size: large;
     font-weight: bold;
@@ -73,7 +73,7 @@
     width: 40px;
     border-radius: 50%;
     background-color: var(--primary);
-    margin: 0 32px;
+    margin: 0 24px;
 }
 
 .nav-icon-wrapper:hover {

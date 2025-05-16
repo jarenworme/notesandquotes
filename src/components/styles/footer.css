@@ -94,7 +94,22 @@
 }
 
 .footer-streaming-links-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
 
+.footer-streaming-link {
+    background-color: transparent;
+    max-width: 300px;
+    border: none;
+    padding: 0;
+}
+
+.footer-streaming-link:hover {
+    cursor: pointer;
 }
 
 .footer-cta-wrapper {

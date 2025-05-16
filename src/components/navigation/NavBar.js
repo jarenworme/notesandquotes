@@ -54,6 +54,8 @@ export default function NavBar() {
                     <button className='nav-btn' onClick={navigateEpisodesAll}>Episodes</button>
                     <button className='nav-btn' onClick={navigateGuests}>Guests</button>
                     <button className='nav-btn' onClick={navigateCommunity}>Community</button>
+                    <button className='nav-btn' onClick={navigateCommunity}>About Naomi</button>
+                    <button className='nav-btn' onClick={navigateCommunity}>Get Involved</button>
                     <button className='nav-icon-wrapper'>
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='nav-icon' size='xl' />
                     </button>

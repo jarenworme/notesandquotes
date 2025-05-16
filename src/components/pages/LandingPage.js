@@ -39,9 +39,9 @@ export default function LandingPage () {
                 </div>
             </div>
             <div className="lp-block2">
-                <div className="lp-block2-left">
+                <div className="lp-white-filter">
                     <h2 className="lp-block2-title">THE DECADE OF UNCERTAINTY AND OPPORTUNITY SHOULDN'T BE SUFFERED ALONE</h2>
-                    <div className="lp-block2-left-bottom-wrapper">
+                    <div className="lp-block2-text-wrapper">
                         <p className="lp-block2-text">
                             Our 20s are often painted as a time of freedom and adventure, but the reality can be far messier — filled with 
                             self-doubt, big dreams, unexpected challenges, and constant change. It's a decade bursting with potential, but 
@@ -53,30 +53,26 @@ export default function LandingPage () {
                             words that can offer a spark of clarity when everything else feels overwhelming. Notes & Quotes was born from 
                             that belief: that sometimes a single sentence can open a door to real conversations, healing, and hope.
                         </p>
-                    </div>
-                </div>
-                <div className="lp-block2-right">
-                    <div className="lp-block2-right-top-wrapper">
                         <p className="lp-block2-green-text">
                             Each episode starts with a meaningful quote. Whether it's about finding yourself, facing fears, tackling 
                             the realities of social and climate justice, or just surviving the rollercoaster of life in your 20s 
                             today. Naomi shares her own reflections and invites guests to bring fresh perspectives, keeping every 
                             conversation real, relatable, and specifically for you.
                         </p>
-                        <div className="lp-block2-image-wrapper"> 
-                            <img src={block2Headshot} alt='Naomi Recording' className='lp-block2-img' />
-                        </div>
+                        <p className="lp-block2-text">
+                            With its candid atmosphere and thoughtful insights, Notes & Quotes is here to inspire, inform, and remind you 
+                            that you're not alone — and you don't have to navigate this wild decade by yourself.
+                        </p>
                     </div>
-                    <p className="lp-block2-text-wide">
-                        With its candid atmosphere and thoughtful insights, Notes & Quotes is here to inspire, inform, and remind you 
-                        that you're not alone — and you don't have to navigate this wild decade by yourself.
-                    </p>
                 </div>
             </div>
             {featuredInfo && <div className="lp-block3">
                 <div className="lp-block3-left-wrapper">
-                    <p className="lp-block3-episode-num">Ep#{featuredInfo.epnum}</p>
-                    <a className="lp-block3-title">{featuredInfo.title}</a>
+                    <div className="lp-block3-left-text-wrapper">
+                        <p className="lp-block3-intro-text">latest episode:</p>
+                        <p className="lp-block3-episode-num">Ep#{featuredInfo.epnum}</p>
+                        <a className="lp-block3-title">{featuredInfo.title}</a>
+                    </div>
                     <button className="lp-block3-img-wrapper">
                         <img src={featuredInfo.imgurl} alt="podcast" className="lp-block3-img" />
                     </button>
@@ -91,27 +87,27 @@ export default function LandingPage () {
                 <div className="lp-block4-content-wrapper">
                     <div className="lp-block4-pillar">
                         <img src={pillar1} alt="pillar1" className="lp-block4-img"/>
-                        <hr />
+                        <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">MENTAL HEALTH</p>
-                        <hr />
+                        <hr className="lp-block4-hr" />
                     </div>
                     <div className="lp-block4-pillar">
-                        <img src={pillar1} alt="pillar1" className="lp-block4-img"/>
-                        <hr />
+                        <img src={pillar2} alt="pillar1" className="lp-block4-img"/>
+                        <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">PERSONAL GROWTH</p>
-                        <hr />
+                        <hr className="lp-block4-hr" />
                     </div>
                     <div className="lp-block4-pillar">
-                        <img src={pillar1} alt="pillar1" className="lp-block4-img"/>
-                        <hr />
+                        <img src={pillar3} alt="pillar1" className="lp-block4-img"/>
+                        <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">CLIMATE JUSTICE</p>
-                        <hr />
+                        <hr className="lp-block4-hr" />
                     </div>
                     <div className="lp-block4-pillar">
-                        <img src={pillar1} alt="pillar1" className="lp-block4-img"/>
-                        <hr />
+                        <img src={pillar4} alt="pillar1" className="lp-block4-img"/>
+                        <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">SOCIAL JUSTICE</p>
-                        <hr />
+                        <hr className="lp-block4-hr" />
                     </div>
                 </div>
                 <a href="https://www.youtube.com/@NotesandQuotesPod/playlists" className="lp-block4-cta" target="_blank">

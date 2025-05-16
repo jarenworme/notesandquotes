@@ -15,11 +15,15 @@ export default function UploadPodcast() {
     const [episodeNum, setEpisodeNum] = useState("");
     const [episodeDateString, setEpisodeDateString] = useState("");
     const [episodeDateStringError, setEpisodeDateStringError] = useState("");
-    const [isFav, setIsFav] = useState(false);
     const [linkApple, setLinkApple] = useState("");
     const [linkSpotify, setLinkSpotify] = useState("");
     const [linkYT, setLinkYT] = useState("");
     const [linkAmazon, setLinkAmazon] = useState("");
+    const [isFav, setIsFav] = useState(false);
+    const [isMentalHealth, setIsMentalHealth] = useState(false);
+    const [isPersonalGrowth, setIsPersonalGrowth] = useState(false);
+    const [isClimateJustice, setIsClimateJustice] = useState(false);
+    const [isSocialJustice, setIsSocialJustice] = useState(false);
 
     const { addPodcast } = useAddPodcast();
 
@@ -56,11 +60,15 @@ export default function UploadPodcast() {
                 episodeLength,
                 episodeNum: parseInt(episodeNum),
                 episodeDateString,
-                isFav,
                 linkApple,
                 linkSpotify,
                 linkYT,
-                linkAmazon
+                linkAmazon,
+                isFav,
+                isMentalHealth,
+                isPersonalGrowth,
+                isClimateJustice,
+                isSocialJustice
             });
             navigate('/', { replace: false });
         } catch (err) {
@@ -177,8 +185,8 @@ export default function UploadPodcast() {
                     <input 
                         className="upload-checkbox" 
                         type="checkbox" 
-                        value={isFav} 
-                        onChange={() => setIsFav(!isFav)} 
+                        value={isMentalHealth} 
+                        onChange={() => setIsMentalHealth(!isMentalHealth)} 
                     />
                 </div>
                 <div className="upload-checkbox-wrapper">
@@ -186,8 +194,8 @@ export default function UploadPodcast() {
                     <input 
                         className="upload-checkbox" 
                         type="checkbox" 
-                        value={isFav} 
-                        onChange={() => setIsFav(!isFav)} 
+                        value={isPersonalGrowth} 
+                        onChange={() => setIsPersonalGrowth(!isPersonalGrowth)} 
                     />
                 </div>
                 <div className="upload-checkbox-wrapper">
@@ -195,8 +203,8 @@ export default function UploadPodcast() {
                     <input 
                         className="upload-checkbox" 
                         type="checkbox" 
-                        value={isFav} 
-                        onChange={() => setIsFav(!isFav)} 
+                        value={isClimateJustice} 
+                        onChange={() => setIsClimateJustice(!isClimateJustice)} 
                     />
                 </div>
                 <div className="upload-checkbox-wrapper">
@@ -204,8 +212,8 @@ export default function UploadPodcast() {
                     <input 
                         className="upload-checkbox" 
                         type="checkbox" 
-                        value={isFav} 
-                        onChange={() => setIsFav(!isFav)} 
+                        value={isSocialJustice} 
+                        onChange={() => setIsSocialJustice(!isSocialJustice)} 
                     />
                 </div>
                 <button 

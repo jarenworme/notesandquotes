@@ -12,11 +12,15 @@ export const useAddPodcast = () => {
         episodeLength,
         episodeNum,
         episodeDateString,
-        isFav,
         linkApple,
         linkSpotify,
         linkYT,
-        linkAmazon
+        linkAmazon,
+        isFav,
+        isMentalHealth,
+        isPersonalGrowth,
+        isClimateJustice,
+        isSocialJustice
     }) => {
         const docRef = doc(episodesCollectionRef, idnum); // use custom ID
         await setDoc(docRef, {
@@ -25,11 +29,15 @@ export const useAddPodcast = () => {
             episodeLength,
             episodeNum,
             episodeDate: new Date(episodeDateString),
-            isFav,
             linkApple,
             linkSpotify,
             linkYT,
-            linkAmazon
+            linkAmazon,
+            isFav,
+            isMentalHealth,
+            isPersonalGrowth,
+            isClimateJustice,
+            isSocialJustice
         });
     };
 

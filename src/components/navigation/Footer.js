@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faYoutube, faTiktok, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import '../styles/footer.css';
 
-import flogo from "../../assets/logos/Logo3.png"
+import flogo from "../../assets/logos/Logo3.png";
+import banneryt from "../../assets/icons/socialBannerYouTube.png";
+import bannersp from "../../assets/icons/socialBannerSpotify.png";
+import bannerap from "../../assets/icons/socialBannerApple.png";
+import banneram from "../../assets/icons/socialBannerAmazon.png";
 
 
 export default function Footer () {
@@ -43,7 +47,7 @@ export default function Footer () {
                             <FontAwesomeIcon icon={faYoutube} className='footer-icon' size='lg' />                        
                         </a>
                         <a 
-                            href="https://www.instagram.com/notesandquotespod/" 
+                            href="https://www.tiktok.com/@notesandquotespod" 
                             className="footer-social-a" 
                             target="_blank" 
                             rel="noopener noreferrer"
@@ -63,7 +67,10 @@ export default function Footer () {
                 <div className="footer-right-wrapper">
                     <h2 className="footer-title">By one 20-something.</h2>
                     <h2 className="footer-title">For every 20-something.</h2>
-                    <div className="footer-streaming-links-wrapper"></div>
+                    <div className="footer-streaming-links-wrapper">
+                        <a className="footer-streaming-link">.
+                        </a>
+                    </div>
                     <div className="footer-cta-wrapper">
                         <a 
                             href="https://www.patreon.com/NotesandQuotesPodcast" 
