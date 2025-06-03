@@ -11,7 +11,7 @@ export default function EpisodesSocialJustice() {
 
     return (
         <div className="p404-wrapper">
-            <p className="p404-text">The page you're looking for doesn't exist.</p>
+            <p className="p404-text">Social Justice.</p>
             <button className="p404-button" onClick={navigateLandingPage}>Return to Notes & Quotes</button>
         </div>
     );
