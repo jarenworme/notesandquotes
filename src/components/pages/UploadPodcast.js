@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { storage } from "../../config/firebase-config";
 import { useAddPodcast } from "../../hooks/useAddPodcast";
-import "../styles/upload-edit.css"
+import "../styles/upload-edit.css";
+import "../styles/loading.css";
 
 
 export default function UploadPodcast() {
@@ -9,8 +12,11 @@ export default function UploadPodcast() {
     const navigate = useNavigate();
 
     // state variables
+    const [uploadLoading, setUploadLoading] = useState(false);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [imgfile, setImgfile] = useState("");
+    const [preview, setPreview] = useState("");
     const [episodeLength, setEpisodeLength] = useState("");
     const [episodeNum, setEpisodeNum] = useState("");
     const [episodeDateString, setEpisodeDateString] = useState("");
@@ -27,6 +33,13 @@ export default function UploadPodcast() {
 
     const { addPodcast } = useAddPodcast();
 
+    // function to handle the user inputted photo file
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setImgfile(file);
+        setPreview(URL.createObjectURL(file)); // Show image preview
+    };
+
     const validateEpisodeDateString = () => {
         // gives an error for an incorrectly formatted date
         var dateRegex = /^\d{4}-\d{2}-\d{2}$/;
@@ -41,6 +54,8 @@ export default function UploadPodcast() {
         // prevent default form submission
         e.preventDefault();
 
+        setUploadLoading(true);
+
         // calculate the correct id in firebase based on the episode number
         let idnum = "";
 
@@ -52,10 +67,18 @@ export default function UploadPodcast() {
             idnum = "ep-" + episodeNum.toString();
         }
 
+        let imgurl = "";
+            
+        // Upload new image to Firebase Storage
+        const storageRef = ref(storage, `podcasts/${idnum}`);
+        await uploadBytes(storageRef, imgfile);
+        imgurl = await getDownloadURL(storageRef);
+
         try {
             await addPodcast({ 
                 idnum, 
                 title,
+                imgurl,
                 description,
                 episodeLength,
                 episodeNum: parseInt(episodeNum),
@@ -70,13 +93,34 @@ export default function UploadPodcast() {
                 isClimateJustice,
                 isSocialJustice
             });
+            setUploadLoading(false);
             navigate('/', { replace: false });
         } catch (err) {
+            setUploadLoading(false);
             console.error(err.message);
         }
     };
 
     const handleCancel = () => navigate('/', { replace: false });
+
+    if (uploadLoading) return (
+        <div className="loading-wrapper">
+            <div className="loading-screen">
+                <div className="loading-img-wrapper">
+                    <div className="loading-img l1" />
+                </div>
+                <div className="loading-img-wrapper">
+                    <div className="loading-img l2" />
+                </div>
+                <div className="loading-img-wrapper">
+                    <div className="loading-img l3" />
+                </div>
+                <div className="loading-img-wrapper">
+                    <div className="loading-img l4" />
+                </div>
+            </div>
+        </div>
+    );
 
     return (
         <div className="upload-wrapper">
@@ -93,13 +137,22 @@ export default function UploadPodcast() {
                 </div>
                 <div className="upload-input-wrapper">
                     <label className="upload-label">Description</label>
-                    <input 
-                        className="upload-input" 
-                        type="string" 
-                        value={description} 
-                        onChange={(e) => setDescription(e.target.value)} 
-                        required 
+                    <textarea
+                        className="upload-input"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        required
+                        rows={4}
                     />
+                    </div>
+                <div className="upload-img-content-wrapper">
+                    <label className="upload-label">Podcast Thumbnail</label>
+                    { preview !== "" && 
+                        <div className="upload-img-wrapper">
+                            <img src={preview} alt="Guest Headshot" className="upload-img" />
+                        </div>
+                    }
+                    <input className="upload-file-input" type="file" onChange={handleFileChange} accept="image/*" required />
                 </div>
                 <div className="upload-input-wrapper">
                     <label className="upload-label">Length</label>

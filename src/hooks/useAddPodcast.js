@@ -9,6 +9,7 @@ export const useAddPodcast = () => {
         idnum,
         title,
         description,
+        imgurl,
         episodeLength,
         episodeNum,
         episodeDateString,
@@ -26,6 +27,7 @@ export const useAddPodcast = () => {
         await setDoc(docRef, {
             title,
             description,
+            imgurl,
             episodeLength,
             episodeNum,
             episodeDate: new Date(episodeDateString),

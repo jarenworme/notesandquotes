@@ -42,6 +42,7 @@
     border: 1px solid var(--primary);
     border-radius: 6px;
     background-color: var(--white);
+    resize: none;
 }
 
 .upload-img-content-wrapper {

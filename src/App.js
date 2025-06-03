@@ -1,4 +1,3 @@
-import React from "react";
 import Router from './components/routes/routes';
 import NavBar from './components/navigation/NavBar';
 import Footer from "./components/navigation/Footer";

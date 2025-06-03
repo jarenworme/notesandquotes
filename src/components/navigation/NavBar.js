@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -18,11 +18,11 @@ export default function NavBar() {
     const navigateHome = () => navigate('/', { replace: false });
     const navigateValues = () => navigate('/Values', { replace: false });
     const navigateEpisodesAll = () => navigate('/Episodes/All', { replace: false });
-    const navigateEpisodesFavs = () => navigate('/Episodes/NaomisFavs', { replace: false });
-    const navigateEpisodesMentalHealth = () => navigate('/Episodes/MentalHealth', { replace: false });
-    const navigateEpisodesPersonalGrowth = () => navigate('/Episodes/PersonalGrowth', { replace: false });
-    const navigateEpisodesSocialJustice = () => navigate('/Episodes/SocialJustice', { replace: false });
-    const navigateEpisodesClimateJustice = () => navigate('/Episodes/ClimateJustice', { replace: false });
+    // const navigateEpisodesFavs = () => navigate('/Episodes/NaomisFavs', { replace: false });
+    // const navigateEpisodesMentalHealth = () => navigate('/Episodes/MentalHealth', { replace: false });
+    // const navigateEpisodesPersonalGrowth = () => navigate('/Episodes/PersonalGrowth', { replace: false });
+    // const navigateEpisodesSocialJustice = () => navigate('/Episodes/SocialJustice', { replace: false });
+    // const navigateEpisodesClimateJustice = () => navigate('/Episodes/ClimateJustice', { replace: false });
     const navigateGuests = () => navigate('/Guests', { replace: false });
     const navigateCommunity  = () => navigate('/Community', { replace: false });
     const navigateEditFeatured = () => navigate('/editFeatured', { replace: false });
