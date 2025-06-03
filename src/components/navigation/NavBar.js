@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +16,7 @@ export default function NavBar() {
 
     // navigation functions
     const navigateHome = () => navigate('/', { replace: false });
+    const navigateAboutNaomi = () => navigate('/aboutNaomi', { replace: false });
     const navigateOurValues = () => navigate('/ourValues', { replace: false });
     const navigateEpisodesAll = () => navigate('/episodes/all', { replace: false });
     const navigateEpisodesFavs = () => navigate('/episodes/naomisFavs', { replace: false });
@@ -30,6 +31,12 @@ export default function NavBar() {
     const navigateEditFeatured = () => navigate('/EditFeatured', { replace: false });
     const navigateUploadPodcast = () => navigate('/UploadPodcast', { replace: false });
     const navigateUploadGuest = () => navigate('/UploadGuest', { replace: false });
+
+    // state variables
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // function to change if menu is shown or not for mobile
+    const toggleMobileMenu = () => setIsMobileMenuOpen(prev => !prev);
 
     // access Context for Authentication for showing admin panel
     const { authData, setAuthData } = useContext(AuthContext);
@@ -51,13 +58,28 @@ export default function NavBar() {
                 <button className='nav-logo-wrapper' onClick={navigateHome}>
                     <img src={logo} alt='logo' className='nav-logo' />
                 </button>
-                <div className='nav-right-wrapper'>
+                <button className="hamburger" onClick={toggleMobileMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </button>
+                <div className={`nav-right-wrapper ${isMobileMenuOpen ? "show" : ""}`}>
                     <button className='nav-btn' onClick={navigateOurValues}>Our Values</button>
-                    <button className='nav-btn' onClick={navigateEpisodesAll}>Episodes</button>
+                    <div className="nav-dropdown">
+                        <button className="nav-btn">Episodes</button>
+                        <div className="nav-dropdown-content">
+                            <button onClick={navigateEpisodesAll}>All Episodes</button>
+                            <button onClick={navigateEpisodesFavs}>Naomi’s Favs</button>
+                            <button onClick={navigateEpisodesMentalHealth}>Mental Health</button>
+                            <button onClick={navigateEpisodesPersonalGrowth}>Personal Growth</button>
+                            <button onClick={navigateEpisodesSocialJustice}>Social Justice</button>
+                            <button onClick={navigateEpisodesClimateJustice}>Climate Justice</button>
+                        </div>
+                    </div>
                     <button className='nav-btn' onClick={navigateGuests}>Guests</button>
                     <button className='nav-btn' onClick={navigateCommunity}>Community</button>
-                    <button className='nav-btn' onClick={navigateCommunity}>About Naomi</button>
-                    <button className='nav-btn' onClick={navigateCommunity}>Get Involved</button>
+                    <button className='nav-btn' onClick={navigateAboutNaomi}>About Naomi</button>
+                    <button className='nav-btn' onClick={navigateGetInvolved}>Get Involved</button>
                     <button className='nav-icon-wrapper'>
                         <FontAwesomeIcon icon={faMagnifyingGlass} className='nav-icon' size='xl' />
                     </button>

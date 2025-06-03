@@ -42,6 +42,27 @@
     width: 100%;
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001; /* above menu */
+}
+
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    border-radius: 4px;
+}
+
+
 .nav-right-wrapper {
     display: flex;
     flex-direction: row;
@@ -50,6 +71,39 @@
     height: 100%;
     margin: 0 24px;
 }
+
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  flex-direction: column;
+}
+
+.nav-dropdown-content button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px 15px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.nav-dropdown-content button:hover {
+  background-color: #f0f0f0;
+}
+
+.nav-dropdown:hover .nav-dropdown-content {
+  display: flex;
+}
+
 
 .nav-btn {
     margin: 0 16px;
@@ -125,4 +179,49 @@
 
 .nav-admin-btn:hover, .nav-signout-btn:hover {
     cursor: pointer;
+}
+
+
+/* Mobile layout */
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  .nav-right-wrapper {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    top: 70px; /* adjust based on navbar height */
+    left: 0;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+
+  .nav-right-wrapper.show {
+    display: flex;
+  }
+
+  .nav-btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-dropdown-content {
+    position: static;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .nav-dropdown-content button {
+    padding-left: 1rem;
+    border: none;
+  }
 }
