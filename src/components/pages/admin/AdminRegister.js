@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import { auth } from "../../config/firebase-config";
+import { auth } from "../../../config/firebase-config";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { AuthContext } from "../../context/AuthContext";
-import "../styles/auth.css"
+import { AuthContext } from "../../../context/AuthContext";
+import "../../styles/auth.css"
 
 
 export default function AdminRegister() {

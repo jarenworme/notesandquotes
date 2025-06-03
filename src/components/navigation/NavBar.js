@@ -16,18 +16,20 @@ export default function NavBar() {
 
     // navigation functions
     const navigateHome = () => navigate('/', { replace: false });
-    const navigateValues = () => navigate('/Values', { replace: false });
-    const navigateEpisodesAll = () => navigate('/Episodes/All', { replace: false });
-    // const navigateEpisodesFavs = () => navigate('/Episodes/NaomisFavs', { replace: false });
-    // const navigateEpisodesMentalHealth = () => navigate('/Episodes/MentalHealth', { replace: false });
-    // const navigateEpisodesPersonalGrowth = () => navigate('/Episodes/PersonalGrowth', { replace: false });
-    // const navigateEpisodesSocialJustice = () => navigate('/Episodes/SocialJustice', { replace: false });
-    // const navigateEpisodesClimateJustice = () => navigate('/Episodes/ClimateJustice', { replace: false });
-    const navigateGuests = () => navigate('/Guests', { replace: false });
-    const navigateCommunity  = () => navigate('/Community', { replace: false });
-    const navigateEditFeatured = () => navigate('/editFeatured', { replace: false });
-    const navigateUploadPodcast = () => navigate('/uploadPodcast', { replace: false });
-    const navigateUploadGuest = () => navigate('/uploadGuest', { replace: false });
+    const navigateOurValues = () => navigate('/ourValues', { replace: false });
+    const navigateEpisodesAll = () => navigate('/episodes/all', { replace: false });
+    const navigateEpisodesFavs = () => navigate('/episodes/naomisFavs', { replace: false });
+    const navigateEpisodesMentalHealth = () => navigate('/episodes/mentalHealth', { replace: false });
+    const navigateEpisodesPersonalGrowth = () => navigate('/episodes/personalGrowth', { replace: false });
+    const navigateEpisodesSocialJustice = () => navigate('/episodes/socialJustice', { replace: false });
+    const navigateEpisodesClimateJustice = () => navigate('/episodes/climateJustice', { replace: false });
+    const navigateGetInvolved = () => navigate('/getInvolved', { replace: false });
+    const navigateGuests = () => navigate('/guests', { replace: false });
+    const navigateCommunity  = () => navigate('/community', { replace: false });
+
+    const navigateEditFeatured = () => navigate('/EditFeatured', { replace: false });
+    const navigateUploadPodcast = () => navigate('/UploadPodcast', { replace: false });
+    const navigateUploadGuest = () => navigate('/UploadGuest', { replace: false });
 
     // access Context for Authentication for showing admin panel
     const { authData, setAuthData } = useContext(AuthContext);
@@ -50,7 +52,7 @@ export default function NavBar() {
                     <img src={logo} alt='logo' className='nav-logo' />
                 </button>
                 <div className='nav-right-wrapper'>
-                    <button className='nav-btn' onClick={navigateValues}>Our Values</button>
+                    <button className='nav-btn' onClick={navigateOurValues}>Our Values</button>
                     <button className='nav-btn' onClick={navigateEpisodesAll}>Episodes</button>
                     <button className='nav-btn' onClick={navigateGuests}>Guests</button>
                     <button className='nav-btn' onClick={navigateCommunity}>Community</button>

@@ -1,17 +1,19 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons';
-import { auth } from "../../config/firebase-config";
+import { auth } from "../../../config/firebase-config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { AuthContext } from "../../context/AuthContext";
-import "../styles/auth.css"
+import { AuthContext } from "../../../context/AuthContext";
+import "../../styles/auth.css"
 
 
 export default function AdminLogin() {
     // init navigate variable for page navigation
     const navigate = useNavigate();
-    // const navigateForgotPassword = () => navigate('/forgotPassword', { replace: false });
+
+    // navigation functions
+    const navigateForgotPassword = () => navigate('/forgotPassword', { replace: false });
 
     // state variables
     const [email, setEmail] = useState("");
@@ -75,7 +77,8 @@ export default function AdminLogin() {
                                 onClick={() => setShowPassword(!showPassword)}
                             />
                         </div>
-                        <button type="submit" className="auth-submit-btn">Login</button>
+                        <button type="button" className="auth-forgot-password-btn">forgot password?</button>
+                        <button type="submit" className="auth-submit-btn" onClick={navigateForgotPassword}>Login</button>
                     </form>       
                 </div>
             </div>

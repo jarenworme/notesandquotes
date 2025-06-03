@@ -1,28 +1,23 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCheck, faMinus } from '@fortawesome/free-solid-svg-icons';
-// import { faInstagram, faMedium } from '@fortawesome/free-brands-svg-icons';
-import { AuthContext } from "../../context/AuthContext";
 import { useFetchFeatured } from "../../hooks/useFetchFeatured";
 import '../styles/landing-page.css';
 
-import block2Headshot from "../../assets/images/headshot2.png";
 import facesBackground from "../../assets/images/faces-background.png";
 import pillar1 from "../../assets/icons/pillar1.png";
 import pillar2 from "../../assets/icons/pillar2.png";
 import pillar3 from "../../assets/icons/pillar3.png";
 import pillar4 from "../../assets/icons/pillar4.png";
 
+
 export default function LandingPage () {
     // init navigate variable for page navigation
     const navigate = useNavigate();
 
     // routing functions
-    const navigateEpisodesFavs = () => navigate('/Episodes/NaomisFavs', { replace: false });
+    const navigateEpisodesFavs = () => navigate('/episodes/naomisFavs', { replace: false });
 
-    const { authData } = useContext(AuthContext);
-
+    // hook info
     const { featuredInfo, fetchFeatured } = useFetchFeatured();
 
     // fetch featured data

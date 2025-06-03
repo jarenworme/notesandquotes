@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../config/firebase-config";
-import { useAddPodcast } from "../../hooks/useAddPodcast";
-import "../styles/upload-edit.css";
-import "../styles/loading.css";
+import { storage } from "../../../config/firebase-config";
+import { useAddPodcast } from "../../../hooks/useAddPodcast";
+import "../../styles/upload-edit.css";
+import "../../styles/loading.css";
 
 
 export default function UploadPodcast() {

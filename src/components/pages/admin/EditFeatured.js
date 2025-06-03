@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../config/firebase-config";
-import { useFetchFeatured } from "../../hooks/useFetchFeatured";
-import { useEditFeatured } from "../../hooks/useEditFeatured";
-import "../styles/upload-edit.css"
+import { storage } from "../../../config/firebase-config";
+import { useFetchFeatured } from "../../../hooks/useFetchFeatured";
+import { useEditFeatured } from "../../../hooks/useEditFeatured";
+import "../../styles/upload-edit.css"
 
 export default function EditFeatured() {
     // init navigate variable for page navigation
@@ -60,7 +60,6 @@ export default function EditFeatured() {
             imgurl = await getDownloadURL(storageRef);
 
             await editFeatured({ epnum, title, imgurl, quote, quoteauthor, ytlink })
-            // await editSet(setID, { img_url, name, num_parts: parseInt(num_parts) });
             navigate('/', { replace: false });
         } catch (err) {
             console.error(err.message);

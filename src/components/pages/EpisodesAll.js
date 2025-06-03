@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useContext } from "react";
+// import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useFetchPodcasts } from "../../hooks/useFetchPodcasts";
 import { useDeletePodcast } from "../../hooks/useDeletePodcast";
@@ -8,7 +8,7 @@ import '../styles/loading.css';
 
 export default function EpisodesAll() {
     // init navigate variable for page navigation
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // ref variable to only call useEffect once in testing
     const fetchCalled = useRef(false);
@@ -40,7 +40,6 @@ export default function EpisodesAll() {
             updatePodcastsOnDelete();
         }
     };
-
 
     // routing functions
     const navigateLandingPage = () => {

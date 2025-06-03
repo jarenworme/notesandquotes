@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../config/firebase-config";
-import { useAddGuest } from "../../hooks/useAddGuest";
-import "../styles/upload-edit.css"
+import { storage } from "../../../config/firebase-config";
+import { useAddGuest } from "../../../hooks/useAddGuest";
+import "../../styles/upload-edit.css"
 
 
 export default function UploadGuest() {
