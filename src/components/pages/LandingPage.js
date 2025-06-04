@@ -4,6 +4,7 @@ import { useFetchFeatured } from "../../hooks/useFetchFeatured";
 import '../styles/landing-page.css';
 
 import facesBackground from "../../assets/images/faces-background.png";
+import facesBackgroundmobile from "../../assets/images/faces-background-rotated.png";
 import pillar1 from "../../assets/icons/pillar1.png";
 import pillar2 from "../../assets/icons/pillar2.png";
 import pillar3 from "../../assets/icons/pillar3.png";
@@ -18,12 +19,12 @@ export default function LandingPage () {
     const navigateEpisodesFavs = () => navigate('/episodes/naomisFavs', { replace: false });
 
     // hook info
-    const { featuredInfo, fetchFeatured } = useFetchFeatured();
+    const { featuredInfo, podcastInfo, fetchFeatured } = useFetchFeatured();
 
     // fetch featured data
     useEffect(() => {
         fetchFeatured();
-    }, []);
+    });
 
     return (
         <div className="lp-wrapper">
@@ -32,6 +33,9 @@ export default function LandingPage () {
                     <h1 className="lp-h1">THE COMMUNITY FOR 20 SOMETHINGS TO FEEL CONNECTED, INFORMED AND SEEN</h1>
                     <button className="lp-cta">NEW EPISODES EVERY TUESDAY!</button>
                 </div>
+            </div>
+            <div className="lp-block1a">
+                <p className="lp-block1a-text">psst! thanks for being here :)</p>
             </div>
             <div className="lp-block2">
                 <div className="lp-white-filter">
@@ -61,16 +65,16 @@ export default function LandingPage () {
                     </div>
                 </div>
             </div>
-            {featuredInfo && <div className="lp-block3">
+            {featuredInfo && podcastInfo && <div className="lp-block3">
                 <div className="lp-block3-left-wrapper">
                     <div className="lp-block3-left-text-wrapper">
                         <p className="lp-block3-intro-text">latest episode:</p>
                         <p className="lp-block3-episode-num">Ep#{featuredInfo.epnum}</p>
-                        <a className="lp-block3-title">{featuredInfo.title}</a>
+                        <a className="lp-block3-title" href={podcastInfo.linkYT} target="_blank" rel="noreferrer">{podcastInfo.title}</a>
                     </div>
-                    <button className="lp-block3-img-wrapper">
-                        <img src={featuredInfo.imgurl} alt="podcast" className="lp-block3-img" />
-                    </button>
+                    <a className="lp-block3-img-wrapper" href={podcastInfo.linkYT} target="_blank" rel="noreferrer">
+                        <img src={podcastInfo.imgurl} alt="podcast" className="lp-block3-img" />
+                    </a>
                 </div>
                 <div className="lp-block3-right-wrapper">
                     <h3 className="lp-block3-quote-title">QUOTE OF THE WEEK</h3>
@@ -105,13 +109,14 @@ export default function LandingPage () {
                         <hr className="lp-block4-hr" />
                     </div>
                 </div>
-                <a href="https://www.youtube.com/@NotesandQuotesPod/playlists" className="lp-block4-cta" target="_blank">
+                <a href="https://www.youtube.com/@NotesandQuotesPod/playlists" className="lp-block4-cta" target="_blank" rel="noreferrer">
                     Listen to curated playlists
                 </a>
                 <h2 className="lp-block4-title">OUR PILLARS</h2>
             </div>
             <div className="lp-block5">
                 <img src={facesBackground} alt="Faces background" className="lp-block5-img" />
+                <img src={facesBackgroundmobile} alt="Faces background" className="lp-block5-img-mobile" />
                 <div className="lp-block5-content">
                     <p className="lp-block5-card">A personal look at</p>
                     <button onClick={navigateEpisodesFavs} className="lp-block5-btn">Naomi's Favorites</button>

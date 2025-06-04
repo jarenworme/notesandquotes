@@ -3,9 +3,9 @@
 }
 
 .lp-block1 {
-    height: 90vh;
+    height: 91vh;
     width: 100%;
-    margin: 80px 0 0 0;
+    margin: 72px 0 0 0;
     background-image: url(/src/assets/images/background-flipped-twice.png);
     background-position: center;
     background-size: cover;
@@ -46,6 +46,22 @@
 .lp-cta:hover {
     cursor: pointer;
     background-color: var(--primary);
+}
+
+.lp-block1a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lp-block1a-text {
+    margin: 8px;
+    color: rgba(0,0,0,0.01); 
+    transition: color 0.5s ease-in;
+}
+
+.lp-block1a:hover .lp-block1a-text {
+    color: rgb(0, 0, 0); 
 }
 
 .lp-block2 {
@@ -148,6 +164,8 @@
     margin: 8px 0;
     font-size: xx-large;
     font-weight: bold;
+    text-decoration: none;
+    color: var(--black);
 }
 
 .lp-block3-title:hover {
@@ -234,7 +252,8 @@
     align-items: center;
     justify-content: center;
     width: 18%;
-    min-width: 130px;
+    min-width: 190px;
+    margin-top: 16px;
 }
 
 .lp-block4-img {
@@ -257,6 +276,7 @@
 .lp-block4-title {
     margin: 0;
     font-size: 340%;
+    text-align: center;
     color: var(--black);
 }
 
@@ -287,6 +307,12 @@
     width: 100%;
     height: auto;
     display: block;
+}
+
+.lp-block5-img-mobile {
+    width: 100%;
+    height: auto;
+    display: none;
 }
 
 .lp-block5-content {
@@ -331,7 +357,194 @@
 }
 
 .lp-block5-btn:hover {
-cursor: pointer;
-color: var(--secondary);
+    cursor: pointer;
+    color: var(--secondary);
 }
-  
+
+/*************************************************************************************************************************************/
+
+@media screen and (max-width: 1000px) {
+    .lp-h1 {
+        width: 80%;
+        font-size: 300%;
+    }
+    
+    .lp-block3 {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .lp-block3-left-wrapper {
+        height: fit-content;
+        width: 100%;
+        margin-bottom: 24px;
+        padding: 0 5%;
+    }
+    .lp-block3-title {
+        width: 100%;
+    }
+    .lp-block3-img-wrapper {
+        height: fit-content;
+        margin-top: 24px;
+    }
+    .lp-block3-right-wrapper {
+        width: 100%;
+        padding-bottom: 24px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .lp-h1 {
+        width: 80%;
+        font-size: 280%;
+    }
+    .lp-cta:hover {
+        background-color: transparent;
+    }
+    .lp-block1a-text {
+        color: rgb(0, 0, 0);
+    }
+    .lp-white-filter {
+        padding: 40px 0 64px 0;
+    }
+    .lp-block2-title {
+        width: 90%;
+        font-size: 230%;
+    }
+    .lp-block2-text-wrapper {
+        width: 90%;
+    }
+    .lp-block2-text {
+        font-size: medium;
+    }
+    .lp-block2-green-text {
+        font-size: medium;
+    }
+    .lp-block3 {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .lp-block3-left-wrapper {
+        height: fit-content;
+        width: 100%;
+        margin-bottom: 24px;
+        padding: 0 5%;
+    }
+    .lp-block3-title {
+        width: 100%;
+    }
+    .lp-block3-img-wrapper {
+        height: fit-content;
+        margin-top: 24px;
+    }
+    .lp-block3-right-wrapper {
+        width: 100%;
+        padding-bottom: 24px;
+    }
+    .lp-block5 {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    .lp-block5-card {
+        min-height: 0px;
+        width: fit-content;
+        min-width: 200px;
+        transform: rotate(357deg);
+        font-size: larger;
+    }
+    .lp-block5-btn {
+        min-height: 0px;
+        width: fit-content;
+        min-width: 280px;
+        font-size: x-large;
+        transform: rotate(3deg);
+    }
+    .lp-block5-btn:hover {
+        color: var(--light-beige);
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    /* Styles for screens where width is less than height */
+    .lp-h1 {
+        width: 80%;
+        font-size: 280%;
+    }
+    .lp-cta:hover {
+        background-color: transparent;
+    }
+    .lp-block1a-text {
+        color: rgb(0, 0, 0);
+    }
+    .lp-white-filter {
+        padding: 40px 0 64px 0;
+    }
+    .lp-block2-title {
+        width: 90%;
+        font-size: 230%;
+    }
+    .lp-block2-text-wrapper {
+        width: 90%;
+    }
+    .lp-block2-text {
+        font-size: medium;
+    }
+    .lp-block2-green-text {
+        font-size: medium;
+    }
+    .lp-block3 {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .lp-block3-left-wrapper {
+        height: fit-content;
+        width: 100%;
+        margin-bottom: 24px;
+        padding: 0 5%;
+    }
+    .lp-block3-title {
+        width: 100%;
+    }
+    .lp-block3-img-wrapper {
+        height: fit-content;
+        margin-top: 24px;
+    }
+    .lp-block3-right-wrapper {
+        height: 100%;
+        width: 100%;
+        padding-bottom: 24px;
+    }
+    .lp-block5 {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
+    .lp-block5-img {
+        display: none;
+    }
+
+    .lp-block5-img-mobile {
+        display: block;
+    }
+
+    .lp-block5-card {
+        min-height: 0px;
+        width: fit-content;
+        min-width: 200px;
+        transform: rotate(357deg);
+        font-size: larger;
+    }
+    .lp-block5-btn {
+        min-height: 0px;
+        width: fit-content;
+        min-width: 280px;
+        font-size: x-large;
+        transform: rotate(3deg);
+    }
+    .lp-block5-btn:hover {
+        color: var(--light-beige);
+    }
+}
