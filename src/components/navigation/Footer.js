@@ -5,10 +5,10 @@ import { faInstagram, faYoutube, faTiktok, faLinkedin } from '@fortawesome/free-
 import '../styles/footer.css';
 
 import flogo from "../../assets/logos/Logo3.png";
-import banneryt from "../../assets/icons/socialBannerYouTube.png";
-import bannersp from "../../assets/icons/socialBannerSpotify.png";
-import bannerap from "../../assets/icons/socialBannerApple.png";
-import banneram from "../../assets/icons/socialBannerAmazon.png";
+// import banneryt from "../../assets/icons/socialBannerYouTube.png";
+// import bannersp from "../../assets/icons/socialBannerSpotify.png";
+// import bannerap from "../../assets/icons/socialBannerApple.png";
+// import banneram from "../../assets/icons/socialBannerAmazon.png";
 
 
 export default function Footer () {
@@ -27,7 +27,7 @@ export default function Footer () {
                         <img src={flogo} alt='logo' className='footer-img' />
                     </div>
                     <p className="footer-text">The Notes and Quotes Podcast</p>
-                    <a className="footer-text">notesandquotespodcast@gmail.com</a>
+                    {/* <a className="footer-text">notesandquotespodcast@gmail.com</a> */}
                     <button className="footer-admin-btn" onClick={navigateLogin}>- admin login -</button>
                     <div className="footer-social-wrapper">
                         <a 
@@ -68,8 +68,8 @@ export default function Footer () {
                     <h2 className="footer-title">By one 20-something.</h2>
                     <h2 className="footer-title">For every 20-something.</h2>
                     <div className="footer-streaming-links-wrapper">
-                        <a className="footer-streaming-link">.
-                        </a>
+                        {/* <a className="footer-streaming-link">. */}
+                        {/* </a> */}
                     </div>
                     <div className="footer-cta-wrapper">
                         <a 

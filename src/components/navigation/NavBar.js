@@ -33,7 +33,6 @@ export default function NavBar() {
     const navigateUploadGuest = () => navigate('/UploadGuest', { replace: false });
 
     // state variables
-    const [showDropdown, setShowDropdown] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [showEpisodesMobile, setShowEpisodesMobile] = useState(false);
 
