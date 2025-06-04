@@ -1,6 +1,6 @@
-import React from "react";
 import Router from './components/routes/routes';
 import NavBar from './components/navigation/NavBar';
+import Footer from "./components/navigation/Footer";
 import ScrollToTop from './components/navigation/ScrollToTop';
 
 
@@ -10,6 +10,7 @@ function App() {
       <ScrollToTop />
       <NavBar />
       <Router />
+      <Footer />
     </div>
   );
 }
