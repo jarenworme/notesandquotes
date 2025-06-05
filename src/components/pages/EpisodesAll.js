@@ -1,14 +1,25 @@
 import { useEffect, useRef, useContext } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useFetchPodcasts } from "../../hooks/useFetchPodcasts";
 import { useDeletePodcast } from "../../hooks/useDeletePodcast";
+import '../styles/episodes.css';
 import '../styles/loading.css';
 
 
 export default function EpisodesAll() {
     // init navigate variable for page navigation
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    // navigation functions
+    const navigateEpisodesMentalHealth = () => navigate('/episodes/mentalHealth', { replace: false });
+    const navigateEpisodesPersonalGrowth = () => navigate('/episodes/personalGrowth', { replace: false });
+    const navigateEpisodesSocialJustice = () => navigate('/episodes/socialJustice', { replace: false });
+    const navigateEpisodesClimateJustice = () => navigate('/episodes/climateJustice', { replace: false });
+
+    const navigatePodcast = (epnum) => {
+        navigate(`/podcast/${epnum}`, { replace: false });
+    }
 
     // ref variable to only call useEffect once in testing
     const fetchCalled = useRef(false);
@@ -22,14 +33,14 @@ export default function EpisodesAll() {
         fetchPodcasts,
         updatePodcastsOnDelete,
         loadMorePodcasts
-    } = useFetchPodcasts();
+    } = useFetchPodcasts('isPersonalGrowth');
 
     const { deletePodcast, loadingDelete } = useDeletePodcast();
 
     // fetch initial set batch on mount and load filter arrays
     useEffect(() => {
         if (!fetchCalled.current && podcasts.length === 0) {
-            fetchPodcasts();
+            fetchPodcasts(false, null, "isFav");
             fetchCalled.current = true;
         }
     }, [fetchPodcasts, podcasts.length]);
@@ -75,8 +86,7 @@ export default function EpisodesAll() {
     );
 
     return (
-        <div className="p404-wrapper">
-            <p className="p404-text">The page you're looking for doesn't exist.</p>
+        <div className="ep-wrapper">
             <button className="p404-button" onClick={navigateLandingPage}>Return to Notes & Quotes</button>
             <button className="p404-button" onClick={loadmore}>load more</button>
             <button className="p404-button" onClick={logg}>logg</button>
