@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import '../styles/not-found-page.css';
 
 
@@ -8,6 +8,16 @@ export default function PodcastDetails() {
 
     // routing functions
     const navigateLandingPage = () => navigate('/', { replace: false });
+
+    // input parameters for determining if to load register or login on mount (1 for register, 2 for login)
+    const { pid } = useParams();
+
+    // set isRegistered based on input parameters
+    useEffect(() => {
+        if(pid.length() > 0){
+            setIsRegistering(true);
+        }
+    }, [pid]);
 
     return (
         <div className="p404-wrapper">

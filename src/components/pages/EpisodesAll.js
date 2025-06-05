@@ -1,6 +1,9 @@
-import { useEffect, useRef, useContext } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass, faCircleDown, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCirclePlay } from '@fortawesome/free-regular-svg-icons';
 import { useFetchPodcasts } from "../../hooks/useFetchPodcasts";
 import { useDeletePodcast } from "../../hooks/useDeletePodcast";
 import '../styles/episodes.css';
@@ -21,6 +24,9 @@ export default function EpisodesAll() {
         navigate(`/podcast/${epnum}`, { replace: false });
     }
 
+    // state variables
+    const [searchTerm, setSearchTerm] = useState("");
+
     // ref variable to only call useEffect once in testing
     const fetchCalled = useRef(false);
 
@@ -33,7 +39,7 @@ export default function EpisodesAll() {
         fetchPodcasts,
         updatePodcastsOnDelete,
         loadMorePodcasts
-    } = useFetchPodcasts('isPersonalGrowth');
+    } = useFetchPodcasts('all');
 
     const { deletePodcast, loadingDelete } = useDeletePodcast();
 
@@ -45,16 +51,16 @@ export default function EpisodesAll() {
         }
     }, [fetchPodcasts, podcasts.length]);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log("search entered");
+    };
+
     const handleDelete = async (pid) => {
         if (window.confirm("Are you sure you want to delete this episode?")) {
             await deletePodcast(pid);
             updatePodcastsOnDelete();
         }
-    };
-
-    // routing functions
-    const navigateLandingPage = () => {
-        fetchPodcasts();
     };
 
     const loadmore = () => {
@@ -87,17 +93,89 @@ export default function EpisodesAll() {
 
     return (
         <div className="ep-wrapper">
-            <button className="p404-button" onClick={navigateLandingPage}>Return to Notes & Quotes</button>
-            <button className="p404-button" onClick={loadmore}>load more</button>
-            <button className="p404-button" onClick={logg}>logg</button>
-            <div className="podcasts-episodes-wrapper">
-                { podcasts.map(podcast => (
-                    <div key={podcast.id} className="podcasts-podcast">
-                        <h4>{podcast.title}</h4>
-                        { authData.isAuth && <button onClick={() => handleDelete(podcast.id)}>delete episode</button>}
-                    </div>
-                ))}
+            <div className="epall-block1">
+                <div className="epall-block1-img-wrapper">
+
+                </div>
+                <div className="epall-block1-content-wrapper">
+                    <h1 className="epall-block1-title">EPISODES</h1>
+                    <p className="epall-block1-text">
+                        Welcome to the heart of the pod — the episodes. Each conversation here is designed with you in mind, offering 
+                        stories, insights, and reflections to keep you company as you navigate your own path. Whether you're on a walk,
+                         commuting, cooking dinner, or simply unwinding, these episodes are here to meet you where you are. Think of 
+                         them as little pockets of inspiration, honesty, education and reassurance for the days you need it most (and 
+                         even the ones you don't). Press play and make yourself at home.
+                    </p>
+                    <h2 className="epall-block1-subtitle">New episodes every Tuesday!</h2>
+                </div>
             </div>
+            <div className="epall-block2">
+                <h2 className="epall-block2-title">Thematic Playlists</h2>
+                <div className="epall-block2-card-wrapper">
+                    <button className="epall-block2-card" onClick={navigateEpisodesMentalHealth}>
+                        <h4 className="epall-block2-card-text">Mental Health</h4>
+                    </button>
+                    <button className="epall-block2-card" onClick={navigateEpisodesPersonalGrowth}>
+                        <h4 className="epall-block2-card-text">Personal Growth</h4>
+                    </button>
+                    <button className="epall-block2-card" onClick={navigateEpisodesClimateJustice}>
+                        <h4 className="epall-block2-card-text">Climate Justice</h4>
+                    </button>
+                    <button className="epall-block2-card" onClick={navigateEpisodesSocialJustice}>
+                        <h4 className="epall-block2-card-text">Social Justice</h4>
+                    </button>
+                </div>
+            </div>
+            <div className="epall-block3">
+                <h2 className="epall-block3-text">
+                    The commmunity for 20 something's to feel connected, informed and seen.
+                </h2>
+            </div>
+            <div className="epall-block4">
+                <div className="epall-block4-search-wrapper">
+                    <h3 className="epall-block4-title">Search for the episode you want</h3>
+                    <form className="epall-block4-form" onSubmit={handleSubmit}>
+                        <div className="epall-block4-searchbar">
+                            <input 
+                                className="upload-input" 
+                                type="string" 
+                                value={searchTerm} 
+                                onChange={(e) => setSearchTerm(e.target.value)} 
+                                required 
+                            />
+                            <FontAwesomeIcon icon={faMagnifyingGlass} className='nav-icon' size='xl' />
+                        </div>
+                        <button type="submit" className={`epall-block4-btn ${searchTerm === "" ? "hidden" : ""}`}>Search</button>
+                    </form>
+                </div>
+            </div>
+            <hr className="epall-hr" />
+            <div className="epall-block5">
+                <h3 className="epall-block5-title">All Episodes</h3>
+                <div className="ep-podcasts-wrapper">
+                    { podcasts.map(podcast => (
+                        <div key={podcast.id} className="ep-podcast">
+                            <p className="ep-podcast-epnum">#{podcast.epnum}</p>
+                            <button className="ep-podcast-title"  onClick={() => navigatePodcast(podcast.epnum)}>
+                                {podcast.title}
+                            </button>
+                            <a href={podcast.linkYT} className="ep-podcast-icon-wrapper" target="_blank" rel="noreferrer">
+                                <FontAwesomeIcon icon={faCirclePlay} className='ep-podcast-icon' size='xl' />
+                            </a>
+                            { authData.isAuth && 
+                                <button onClick={() => handleDelete(podcast.id)} className="ep-podcast-icon-wrapper">
+                                    <FontAwesomeIcon icon={faTrash} className='ep-podcast-icon' size='xl' />
+                                </button>
+                            }
+                        </div>
+                    ))}
+                </div>
+                <div className="ep-load-wrapper">
+                    <FontAwesomeIcon icon={faCircleDown} className='nav-icon' size='xl' />
+                    <button className="ep-load-btn" onClick={loadmore}>View more</button>
+                </div>
+            </div>
+            <button className="p404-button" onClick={logg}>logg</button>
         </div>
     );
 }
