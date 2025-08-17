@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 
@@ -8,7 +8,7 @@ export const useFetchFeatured = () => {
     const [featuredInfo, setFeaturedInfo] = useState(null);
     const [podcastInfo, setPodcastInfo] = useState(null);
 
-    const fetchFeatured = async () => {
+    const fetchFeatured = useCallback(async () => {
 
         const featuredDocRef = doc(db, "states", "featured");
 
@@ -33,7 +33,7 @@ export const useFetchFeatured = () => {
         } catch (error) {
             console.error("Error updating featured section:", error);
         }
-    };
+    }, []);
 
     return { featuredInfo, podcastInfo, fetchFeatured };
 };
