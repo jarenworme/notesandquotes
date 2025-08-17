@@ -95,6 +95,11 @@
     background-color: var(--primary-dark);
 }
 
+.upload-submit-btn:disabled {
+    cursor: not-allowed;
+    background-color: var(--primary-disabled);
+}
+
 .upload-cancel-btn {
     width: fit-content;
     min-width: 220px;

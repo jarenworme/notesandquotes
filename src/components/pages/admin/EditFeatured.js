@@ -20,7 +20,7 @@ export default function EditFeatured() {
     // fetch featured data
     useEffect(() => {
         fetchFeatured();
-    });
+    }, [fetchFeatured]);
 
     // populate fields with existing data
     useEffect(() => {

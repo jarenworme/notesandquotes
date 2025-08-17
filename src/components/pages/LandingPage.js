@@ -17,6 +17,11 @@ export default function LandingPage () {
 
     // routing functions
     const navigateEpisodesFavs = () => navigate('/episodes/naomisFavs', { replace: false });
+    const navigateEpisodesAll = () => navigate('/episodes/all', { replace: false });
+
+    const navigatePillar = (pillar) => {
+        navigate(`/episodes/${pillar}`, { replace: false });
+    }
 
     // hook info
     const { featuredInfo, podcastInfo, fetchFeatured } = useFetchFeatured();
@@ -31,7 +36,7 @@ export default function LandingPage () {
             <div className="lp-block1">
                 <div className="lp-shadowed">
                     <h1 className="lp-h1">THE COMMUNITY FOR 20 SOMETHINGS TO FEEL CONNECTED, INFORMED AND SEEN</h1>
-                    <button className="lp-cta">NEW EPISODES EVERY TUESDAY!</button>
+                    <button className="lp-cta" onClick={navigateEpisodesAll}>NEW EPISODES EVERY TUESDAY!</button>
                 </div>
             </div>
             <div className="lp-block1a">
@@ -84,30 +89,30 @@ export default function LandingPage () {
             </div>}
             <div className="lp-block4">
                 <div className="lp-block4-content-wrapper">
-                    <div className="lp-block4-pillar">
+                    <button onClick={() => navigatePillar("mentalHealth")} className="lp-block4-pillar">
                         <img src={pillar1} alt="pillar1" className="lp-block4-img"/>
                         <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">MENTAL HEALTH</p>
                         <hr className="lp-block4-hr" />
-                    </div>
-                    <div className="lp-block4-pillar">
+                    </button>
+                    <button onClick={() => navigatePillar("personalGrowth")} className="lp-block4-pillar">
                         <img src={pillar2} alt="pillar1" className="lp-block4-img"/>
                         <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">PERSONAL GROWTH</p>
                         <hr className="lp-block4-hr" />
-                    </div>
-                    <div className="lp-block4-pillar">
+                    </button>
+                    <button onClick={() => navigatePillar("climateJustice")} className="lp-block4-pillar">
                         <img src={pillar3} alt="pillar1" className="lp-block4-img"/>
                         <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">CLIMATE JUSTICE</p>
                         <hr className="lp-block4-hr" />
-                    </div>
-                    <div className="lp-block4-pillar">
+                    </button>
+                    <button onClick={() => navigatePillar("socialJustice")} className="lp-block4-pillar">
                         <img src={pillar4} alt="pillar1" className="lp-block4-img"/>
                         <hr className="lp-block4-hr" />
                         <p className="lp-block4-text">SOCIAL JUSTICE</p>
                         <hr className="lp-block4-hr" />
-                    </div>
+                    </button>
                 </div>
                 <a href="https://www.youtube.com/@NotesandQuotesPod/playlists" className="lp-block4-cta" target="_blank" rel="noreferrer">
                     Listen to curated playlists
