@@ -1,0 +1,105 @@
+.pd-wrapper {
+    width: 100%;
+    margin-top: 72px;
+}
+
+.pd-subwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 32px 20%;
+}
+
+.pd-subtitle {
+    width: 100%;
+    font-weight: normal;
+    margin: 8px 0;
+}
+
+.pd-title {
+    width: 100%;
+    margin: 16px 0;
+    font-size: xx-large;
+    color: var(--primary);
+}
+
+.pd-img-wrapper {
+    width: 100%;
+    height: 400px;
+    border-radius: 16px;
+}
+
+.pd-img-wrapper:hover {
+    cursor: pointer;
+    filter: brightness(90%)
+}
+
+.pd-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    
+}
+
+.pd-text {
+    width: 100%;
+}
+
+.pd-tags {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.pd-tag, .pd-tag-fav {
+    width: fit-content;
+    border: none;
+    border-radius: 16px;
+    padding: 6px 16px 8px 16px;
+    margin: 4px;
+    font-size: medium;
+    color: var(--light-beige);
+    background-color: var(--primary-light);
+}
+
+.pd-tag-fav {
+    background-color: var(--secondary);
+}
+
+.pd-tag:hover, .pd-tag-fav:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+}
+
+
+@media screen and (max-height: 500px) {
+    .pd-subwrapper {
+        padding: 16px 10%;
+    }
+    .pd-title {
+        font-size: x-large;
+    }
+    .pd-img-wrapper {
+        height: 200px;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) {
+    /* Styles for screens where width is less than height */
+    .pd-subwrapper {
+        padding: 16px 10%;
+    }
+    .pd-title {
+        font-size: x-large;
+    }
+    .pd-img-wrapper {
+        height: 200px;
+    }
+}
+

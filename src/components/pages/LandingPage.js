@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-modal";
 import { useFetchFeatured } from "../../hooks/useFetchFeatured";
 import '../styles/landing-page.css';
 
@@ -9,6 +10,8 @@ import pillar1 from "../../assets/icons/pillar1.png";
 import pillar2 from "../../assets/icons/pillar2.png";
 import pillar3 from "../../assets/icons/pillar3.png";
 import pillar4 from "../../assets/icons/pillar4.png";
+
+Modal.setAppElement("#root"); 
 
 
 export default function LandingPage () {
@@ -23,6 +26,27 @@ export default function LandingPage () {
         navigate(`/episodes/${pillar}`, { replace: false });
     }
 
+    // modal code
+    const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+    // check if already shown this session
+        const hasSeenPopup = sessionStorage.getItem("hasSeenPopup");
+
+        if (!hasSeenPopup) {
+        const timer = setTimeout(() => {
+            setIsOpen(true);
+            sessionStorage.setItem("hasSeenPopup", "true"); // mark as shown
+        }, 10000); // 10 seconds
+
+        return () => clearTimeout(timer);
+        }
+    }, []);
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
     // hook info
     const { featuredInfo, podcastInfo, fetchFeatured } = useFetchFeatured();
 
@@ -33,6 +57,37 @@ export default function LandingPage () {
 
     return (
         <div className="lp-wrapper">
+            <Modal
+                isOpen={isOpen}
+                onRequestClose={closeModal}
+                contentLabel="Popup Modal"
+                style={{
+                overlay: {
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                },
+                content: {
+                    top: "50%",
+                    left: "50%",
+                    right: "auto",
+                    bottom: "auto",
+                    transform: "translate(-50%, -50%)",
+                    padding: "2rem",
+                    borderRadius: "12px",
+                    width: "400px",
+                    textAlign: "center",
+                },
+                }}
+            >
+                <h2>👋 Welcome!</h2>
+                <p>Thanks for visiting our site. We hope you enjoy the content!Feel free to sign up for our newsletter&nbsp;
+                <a href="http://eepurl.com/jjStr2" className="" target="_blank" rel="noreferrer">
+                    here!
+                </a>
+                </p>
+                <button onClick={closeModal} style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}>
+                Close
+                </button>
+            </Modal>
             <div className="lp-block1">
                 <div className="lp-shadowed">
                     <h1 className="lp-h1">THE COMMUNITY FOR 20 SOMETHINGS TO FEEL CONNECTED, INFORMED AND SEEN</h1>

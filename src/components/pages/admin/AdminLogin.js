@@ -49,38 +49,39 @@ export default function AdminLogin() {
     return (
         <div className="auth-wrapper">
             <div className="auth-card">
-                <div className="auth-content-wrapper">
-                    { error && <p className="auth-signin-error">{error}</p> } 
-                    <form className="auth-form" onSubmit={handleSubmit}>
-                        <div className="auth-input-wrapper">
-                            <input 
-                                className="auth-input" 
-                                type="email" 
-                                placeholder="Enter email" 
-                                value={email} 
-                                onChange={(e) => setEmail(e.target.value)} 
-                                required 
-                            />
-                        </div>
-                        <div className="auth-input-wrapper">
-                            <input 
-                                className="auth-input" 
-                                type={showPassword ? "text" : "password"} 
-                                placeholder="Enter password" value={password} 
-                                onChange={(e) => setPassword(e.target.value)} 
-                                required 
-                            />
-                            <FontAwesomeIcon 
-                                icon={showPassword ? faEye : faEyeSlash} 
-                                className='auth-eye' 
-                                size='xl' 
-                                onClick={() => setShowPassword(!showPassword)}
-                            />
-                        </div>
-                        <button type="button" className="auth-forgot-password-btn">forgot password?</button>
-                        <button type="submit" className="auth-submit-btn" onClick={navigateForgotPassword}>Login</button>
-                    </form>       
-                </div>
+                <h1 className="auth-title">Admin Login</h1>
+                { error && <p className="auth-signin-error">{error}</p> } 
+                <form className="auth-form" onSubmit={handleSubmit}>
+                    <div className="auth-input-wrapper">
+                        <input 
+                            className="auth-input" 
+                            type="email" 
+                            placeholder="Enter email" 
+                            value={email} 
+                            onChange={(e) => setEmail(e.target.value)} 
+                            required 
+                        />
+                    </div>
+                    <div className="auth-input-wrapper">
+                        <input 
+                            className="auth-input" 
+                            type={showPassword ? "text" : "password"} 
+                            placeholder="Enter password" value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                            required 
+                        />
+                        <FontAwesomeIcon 
+                            icon={showPassword ? faEye : faEyeSlash} 
+                            className='auth-eye' 
+                            size='lg' 
+                            onClick={() => setShowPassword(!showPassword)}
+                        />
+                    </div>
+                    <button type="button" className="auth-forgot-password-btn" onClick={navigateForgotPassword}>
+                        forgot password?
+                    </button>
+                    <button type="submit" className="auth-submit-btn" onClick={handleSubmit}>Login</button>
+                </form>       
             </div>
         </div>
     );

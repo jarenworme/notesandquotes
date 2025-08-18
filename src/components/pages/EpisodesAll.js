@@ -141,7 +141,7 @@ export default function EpisodesAll() {
                     { podcasts.map(podcast => (
                         <div key={podcast.id} className="ep-podcast">
                             <p className="ep-podcast-epnum">#{podcast.episodeNum}</p>
-                            <button className="ep-podcast-title"  onClick={() => navigatePodcast(podcast.epnum)}>
+                            <button className="ep-podcast-title" onClick={() => navigatePodcast(podcast.episodeNum)}>
                                 {podcast.title}
                             </button>
                             <a href={podcast.linkYT} className="ep-podcast-icon-wrapper" target="_blank" rel="noreferrer">

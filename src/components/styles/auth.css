@@ -1,3 +1,82 @@
 .auth-wrapper {
-    padding-top: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 72px;
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var(--primary);
+}
+
+.auth-card {
+    height: 300px;
+    width: 500px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    background-color: var(--light-beige);
+    padding: 8px 16px;
+}
+
+.auth-title {
+    margin: 16px 0;
+    width: 100%;
+    text-align: center;
+    color: var(--primary);
+}
+
+.auth-signin-error {
+    width: 100%;
+    text-align: center;
+    color: var(--error);
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.auth-input-wrapper {
+    width: 80%;
+    min-width: 280px;
+    height: 48px;
+}
+
+.auth-input {
+    height: 32px;
+    width: 80%;
+}
+
+.auth-eye {
+    margin-left: 8px;
+}
+
+.auth-forgot-password-btn {
+    font-size: medium;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+.auth-forgot-password-btn:hover {
+    cursor: pointer;
+    color: var(--secondary);
+}
+
+.auth-submit-btn {
+    color: var(--white);
+    background-color: var(--primary);
+    height: 32px;
+    padding: 4px 24px;
+}
+
+.auth-submit-btn:hover {
+    cursor: pointer;
+    background-color: var(--primary-dark);
 }

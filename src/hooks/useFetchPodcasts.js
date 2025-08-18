@@ -2,7 +2,7 @@ import { useState } from "react";
 import { query, collection, where, orderBy, limit, startAfter, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 
-const LOAD_SIZE = 2;
+const LOAD_SIZE = 6;
 
 export const useFetchPodcasts = (fetchType) => {
   const [podcasts, setPodcasts] = useState([]);
@@ -38,8 +38,6 @@ export const useFetchPodcasts = (fetchType) => {
                     limit(LOAD_SIZE + 1) // Fetch one extra to check if more exist
                 );
             }
-
-            console.log(podcastQuery);
 
             const snapshot = await getDocs(podcastQuery);
             const allDocs = snapshot.docs;
