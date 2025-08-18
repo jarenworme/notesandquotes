@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../config/firebase-config";
 
@@ -7,9 +7,21 @@ import { db } from "../config/firebase-config";
 export const useFetchPodcast = () => {
     const [podcastInfo, setPodcastInfo] = useState(null);
 
-    const fetchPodcast = async () => {
+    const fetchPodcast = useCallback(async (pid) => {
 
-        const podcastDocRef = doc(db, "states", "featured");
+        let adjustedpid = "";
+
+        if (pid < 10) {
+            adjustedpid = `ep-00${pid}`;
+        }
+        else if (pid < 100) {
+            adjustedpid = `ep-0${pid}`;
+        }
+        else {
+            adjustedpid = `ep-${pid}`;
+        }
+
+        const podcastDocRef = doc(db, "episodes", adjustedpid);
 
         try {
             const podcastDoc = await getDoc(podcastDocRef);
@@ -17,7 +29,7 @@ export const useFetchPodcast = () => {
         } catch (error) {
             console.error("Error updating featured section:", error);
         }
-    };
+    }, []);
 
     return { podcastInfo, fetchPodcast };
 };

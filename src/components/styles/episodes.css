@@ -244,8 +244,10 @@
 
 .epall-block5-title {
     width: 100%;
-    font-size: x-large;
+    font-size: 48px;
+    margin: 16px 0;
     text-align: left;
+    font-weight: bold;
 }
 
 .ep-podcasts-wrapper {
@@ -391,6 +393,231 @@
 }
 
 
+/*************************************************************************************************************************************/
+
+
+.ep-pillar-block1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    min-height: fit-content;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    padding: 0 15%;
+    margin-bottom: 40px;
+}
+
+.cj-background {
+    background-image: url(/src/assets/images/placeholderbackground.png);
+}
+
+.mh-background {
+    background-image: url(/src/assets/images/placeholderbackground.png);
+}
+
+.pg-background {
+    background-image: url(/src/assets/images/placeholderbackground.png);
+}
+
+.sj-background {
+    background-image: url(/src/assets/images/placeholderbackground.png);
+}
+
+.ep-pillar-block1-title {
+    font-size: 400%;
+    color: var(--light-beige);
+}
+
+.ep-pillar-block1-blurb1 {
+    background-color: var(--light-beige-opaque);
+    width: 70%;
+    padding: 0 24px 16px 24px;
+}
+
+.ep-pillar-block1-subtitle {
+    width: 100%;
+    text-align: center;
+    font-size: larger;
+}
+
+.ep-pillar-block1-text {
+    width: 100%;
+    text-align: center;
+    font-size: medium;
+}
+
+.ep-pillar-block1-blurb2 {
+    background-color: var(--primary-light);
+    width: 30%;
+    min-width: 200px;
+    margin-top: 32px;
+    padding: 0 24px 16px 24px;
+}
+
+.ep-pillar-block1-quote {
+    width: 100%;
+    text-align: center;
+    font-size: medium;
+    font-weight: bold;
+    color: var(--light-beige);
+}
+
+.ep-pillar-block1-text-light {
+    width: 100%;
+    text-align: center;
+    font-size: medium;
+    color: var(--light-beige);
+}
+
+
+/*************************************************************************************************************************************/
+
+.lp-block5-btn-favs {
+    height: fit-content;
+    min-height: 64px;
+    width: fit-content;
+    min-width: 280px;
+    padding: 12px 32px;
+    box-shadow: -8px -8px var(--light-beige);
+    background-color: var(--black);
+    color: var(--light-beige);
+    font-size: x-large;
+    border: none;
+    transform: rotate(8deg);
+}
+
+.epfavs-block2 {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 64px 104px;
+}
+
+.epfavs-block2-text {
+    width: 60%;
+    font-size: x-large;
+}
+
+.epfavs-block3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 104px;
+}
+
+.epfavs-block3-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: auto;
+    min-height: 360px;
+    width: 300px;
+    margin: 16px;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    background-color: var(--primary);
+    cursor: pointer;
+}
+
+.epfavs-block3-card-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    width: 300px;
+}
+
+.epfavs-block3-card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.epfavs-block3-card-title-wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+}
+
+.epfavs-block3-card-title {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 16px;
+    margin: 0;
+    text-align: left;
+    color: var(--light-beige);
+}
+
+.epfavs-block3-card-text {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding: 4px 16px;
+    text-align: left;
+    color: var(--light-beige);
+}
+
+.epfavs-block3-card-footer {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0 16px 8px 16px;
+    text-align: right;
+    font-size: large;
+    color: var(--light-beige);
+    font-weight: bold;
+}
+
+.epfavs-block4 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 64px 104px;
+}
+
+.epfavs-block4-text {
+    width: 60%;
+    font-size: x-large;
+    text-align: right;
+}
+
+.epfavs-block4-cta {
+    padding: 16px 64px;
+    border: 3px solid var(--primary);
+    margin-top: 32px;
+    margin-right: 200px;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: var(--white);
+    transition: background-color 1s ease, color 1s ease;
+}
+
+.epfavs-block4-cta:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--light-beige);
+}
+
+
+/*************************************************************************************************************************************/
+
+
 @media screen and (max-height: 500px) {
     .epall-block1 {
         flex-direction: column;
@@ -415,27 +642,22 @@
         width: 100%;
         padding: 0 32px;
     }
-
     .epall-block1-title {
         font-size: 300%;
         margin: 8px 0 0 0;
     }
-
     .epall-block1-text {
         font-size: 18px;
         color: var(--light-beige);
         text-align: justify;
     }
-
     .epall-block1-subtitle {
         margin-top: 0;
         text-align: center;
     }
-
     .epall-block2-card {
         height: 200px;
     }
-
     .epall-block3 {
         display: flex;
         align-items: center;
@@ -443,12 +665,10 @@
         padding: 0 16px;
         background-color: var(--black);
     }
-
     .epall-block3-text {
         padding: 16px;
         text-align: center;
     }
-
     .epall-block4 {
         height: 40vh;
         box-sizing: border-box;
@@ -457,7 +677,6 @@
     .epall-block5-title {
         text-align: center;
     }
-
     .ep-podcasts-wrapper {
         display: flex;
         flex-direction: column;
@@ -465,7 +684,6 @@
         justify-content: center;
         width: 100%;
     }
-
     .ep-podcast {
         padding: 4px 16px;
         border-radius: 8px;
@@ -486,18 +704,15 @@
         justify-content: flex-start;
         max-width: none;
     }
-
     .epall-block6-title {
         font-size: xx-large;
         text-align: center;
     }
-
     .epall-block6-text {
         font-size: large;
         margin: 16px 0 8px 0;
         text-align: center;
     }
-
     .epall-block6-cta {
         margin: 16px 8px;
         padding: 4px 16px;
@@ -506,6 +721,47 @@
     .epall-block6-right-wrapper {
         height: 200px;
         margin-bottom: 16px;
+    }
+    /*******************************************************************************************/
+    .ep-pillar-block1 {
+        padding: 56px 10%;
+        background-size: cover;
+    }
+    .ep-pillar-block1-title {
+        width: 100%;
+        text-align: center;
+        font-size: 320%;
+    }
+    .ep-pillar-block1-blurb1 {
+        width: 100%;
+    }
+    /******************************************************************************************/
+    .epfavs-block1-responsive {
+        margin-top: 64px;
+    }
+    .epfavs-block2 {
+        padding: 32px;
+    }
+    .epfavs-block2-text {
+        width: 100%;
+    }
+    .epfavs-block4 {
+        align-items: center;
+        padding: 32px;
+    }
+    .epfavs-block4-text {
+        width: 100%;
+    }
+    .epfavs-block4-cta {
+        margin-right: 0px;
+        font-size: x-large;
+        font-weight: bold;
+        background-color: var(--white);
+        transition: background-color 1s ease, color 1s ease;
+    }
+    .epfavs-block4-cta:hover {
+        background-color: var(--white);
+        color: var(--primary);
     }
 }
 
@@ -534,27 +790,22 @@
         width: 100%;
         padding: 0 32px;
     }
-
     .epall-block1-title {
         font-size: 300%;
         margin: 8px 0 0 0;
     }
-
     .epall-block1-text {
         font-size: 18px;
         color: var(--light-beige);
         text-align: justify;
     }
-
     .epall-block1-subtitle {
         margin-top: 0;
         text-align: center;
     }
-
     .epall-block2-card {
         height: 200px;
     }
-
     .epall-block3 {
         display: flex;
         align-items: center;
@@ -562,12 +813,10 @@
         padding: 0 16px;
         background-color: var(--black);
     }
-
     .epall-block3-text {
         padding: 16px;
         text-align: center;
     }
-
     .epall-block4 {
         height: 40vh;
         box-sizing: border-box;
@@ -576,7 +825,6 @@
     .epall-block5-title {
         text-align: center;
     }
-
     .ep-podcasts-wrapper {
         display: flex;
         flex-direction: column;
@@ -584,7 +832,6 @@
         justify-content: center;
         width: 100%;
     }
-
     .ep-podcast {
         padding: 4px 16px;
         border-radius: 8px;
@@ -605,18 +852,15 @@
         justify-content: flex-start;
         max-width: none;
     }
-
     .epall-block6-title {
         font-size: xx-large;
         text-align: center;
     }
-
     .epall-block6-text {
         font-size: large;
         margin: 16px 0 8px 0;
         text-align: center;
     }
-
     .epall-block6-cta {
         margin: 16px 8px;
         padding: 4px 16px;
@@ -625,5 +869,55 @@
     .epall-block6-right-wrapper {
         height: 200px;
         margin-bottom: 16px;
+    }
+    /*******************************************************************************************/
+    .ep-pillar-block1 {
+        padding: 56px 10%;
+        background-size: cover;
+    }
+    .cj-background {
+        background-image: url(/src/assets/images/cj.png);
+    }
+    .mh-background {
+        background-image: url(/src/assets/images/mh.png);
+    }
+    .pg-background {
+        background-image: url(/src/assets/images/pg.png);
+    }
+    .sj-background {
+        background-image: url(/src/assets/images/sj.png);
+    }
+    .ep-pillar-block1-title {
+        width: 100%;
+        text-align: center;
+        font-size: 320%;
+    }
+    .ep-pillar-block1-blurb1 {
+        width: 100%;
+    }
+    /******************************************************************************************/
+    .epfavs-block2 {
+        padding: 32px;
+    }
+    .epfavs-block2-text {
+        width: 100%;
+    }
+    .epfavs-block4 {
+        align-items: center;
+        padding: 32px;
+    }
+    .epfavs-block4-text {
+        width: 100%;
+    }
+    .epfavs-block4-cta {
+        margin-right: 0px;
+        font-size: x-large;
+        font-weight: bold;
+        background-color: var(--white);
+        transition: background-color 1s ease, color 1s ease;
+    }
+    .epfavs-block4-cta:hover {
+        background-color: var(--white);
+        color: var(--primary);
     }
 }

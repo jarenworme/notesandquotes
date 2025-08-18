@@ -73,6 +73,9 @@ export default function Footer () {
                     </div>
                     <p className="footer-text">The Notes and Quotes Podcast</p>
                     {/* <a className="footer-text">notesandquotespodcast@gmail.com</a> */}
+                    <a href="http://eepurl.com/jjStr2" className="footer-admin-btn" target="_blank" rel="noreferrer">
+                        Sign up for our newsletter!
+                    </a>
                     <button className="footer-admin-btn" onClick={navigateLogin}>- admin login -</button>
                     <div className="footer-social-wrapper">
                         <a 
