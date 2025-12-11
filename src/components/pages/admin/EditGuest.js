@@ -6,7 +6,7 @@ export default function EditGuest() {
     // init navigate variable for page navigation
     const navigate = useNavigate();
 
-    // routing functions
+    // routing functions 
     const navigateLandingPage = () => navigate('/', { replace: false });
 
     return (
